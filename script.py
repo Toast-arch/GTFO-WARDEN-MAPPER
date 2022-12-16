@@ -9,6 +9,7 @@ import json
 
 ## PIL SETTINGS
 background_114 = Image.open("assets/ZONE_114.png")
+background_115 = Image.open("assets/ZONE_115.png")
 background_118 = Image.open("assets/ZONE_118.png")
 background_119 = Image.open("assets/ZONE_119.png")
 locker_png = Image.open("assets/locker.png")
@@ -57,6 +58,12 @@ ID_List_114 = []
 
 for id in json_data['data']['zone 114']:
     ID_List_114.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], islocker=id['islocker']))
+
+#LOADING ZONE 115 IDS
+ID_List_115 = []
+
+for id in json_data['data']['zone 115']:
+    ID_List_115.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], islocker=id['islocker']))
 
 #LOADING ZONE 118 IDS
 ID_List_118 = []
@@ -175,13 +182,21 @@ if len(listOfLines) == 0:
 for index, value in enumerate(listOfLines):
         
     lineToBeRead = value
+    if (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession"):
+        lineToBeRead = lineToBeRead[30:186]
+
+        individualWords = lineToBeRead.split()
+        key_id = individualWords[12]
     if (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen"):
         lineToBeRead = lineToBeRead[15:85]
             
         individualWords = lineToBeRead.split()
         seedList.append(individualWords[2][0:10])
 
-print("All found ID seeds: {}".format(seedList))
+#CHECKING AND GENERATING 115 KEY MAP
+print("KEY ZONE 115:")
+ID_List_115[int(key_id)].print_data()
+ID_List_115[int(key_id)].paste_icon(background_115)
 
 valid_id_count = 0
 
@@ -218,5 +233,6 @@ else:
     print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
 
 background_114.save("ZONE_114_GENERATED.png")
+background_115.save("ZONE_115_GENERATED.png")
 background_118.save("ZONE_118_GENERATED.png")
 background_119.save("ZONE_119_GENERATED.png")
