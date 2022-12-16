@@ -16,7 +16,7 @@ locker_png = Image.open("assets/locker.png")
 box_png = Image.open("assets/box.png")
 
 ##PATH TO YOUR GTFO APPDATA FORLDER
-directory = "C:/Users/bapti/AppData/LocalLow/10 Chambers Collective/GTFO/"
+directory = "C:/Users/"+os.environ.get("USERNAME")+"/AppData/LocalLow/10 Chambers Collective/GTFO/"
 
 #JSON DATA BASE
 json_file = open("assets/R2C2_Mapping.json")
