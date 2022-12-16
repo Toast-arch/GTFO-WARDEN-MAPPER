@@ -92,6 +92,8 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
         break
     listOfLines.append(line)
 
+key_id = 0
+
 #ENUMERATING IDS AND KEYS
 for index, value in enumerate(listOfLines):
         
