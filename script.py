@@ -25,12 +25,14 @@ box_png = Image.open("assets/box.png")
 
 ##CLASSES
 class ID_:
-    def __init__(self, index, seed, area, x, y, islocker):
+    def __init__(self, index, seed, area, x, y, z, lock, islocker):
         self.index_ = index
         self.seed_ = seed
         self.area_ = area
         self.x_ = x
         self.y_ = y
+        self.z_ = z
+        self.lock_ = lock
         self.islocker_ = islocker
 
     def print_data(self):
@@ -47,8 +49,18 @@ class ID_:
             background.paste(box_png, (self.x_, self.y_), box_png)
             offset_y = 20
         draw = ImageDraw.Draw(background)
-        font = ImageFont.truetype("assets/OpenSans-Bold.ttf", 64)
-        draw.text((self.x_ - offset_x, self.y_ + offset_y),str(self.index_),(255,0,0),font=font)
+        font = ImageFont.truetype("assets/OpenSans-Bold.ttf", 55)
+        r, g, b = 0, 255, 0
+        if self.lock_ == 1:
+            r, g, b = 250, 218, 94
+        elif self.lock_ == 2:
+            r, g, b = 255, 0, 0
+
+        draw.text((self.x_ - offset_x, self.y_ + offset_y),str(self.index_),(r,g,b),font=font)
+        if self.z_ > 0:
+            draw.text((self.x_ + 10, self.y_ - 20),'^',(0,0,0),font=font)
+        elif self.z_ < 0:
+            draw.text((self.x_ + 10, self.y_ - 20),'v',(0,0,0),font=font)
     
     def tojson(self):
         return json.dumps(self.__dict__, indent=4)
@@ -72,7 +84,7 @@ for zone in json_data['zones']:
     idlist = []
     #Loading all IDs
     for id in zone['data']:
-        idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], islocker=id['islocker']))
+        idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker']))
     print("Loading " + zone['name'] + " with map file " + zone['map file'])
     
     #Creating ID List for a zone
