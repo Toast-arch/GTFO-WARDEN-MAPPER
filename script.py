@@ -7,75 +7,76 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 
-## PIL SETTINGS
-background_114 = Image.open("assets/ZONE_114.png")
-background_115 = Image.open("assets/ZONE_115.png")
-background_118 = Image.open("assets/ZONE_118.png")
-background_119 = Image.open("assets/ZONE_119.png")
-locker_png = Image.open("assets/locker.png")
-box_png = Image.open("assets/box.png")
-
-##PATH TO YOUR GTFO APPDATA FORLDER
+#PATH TO YOUR GTFO APPDATA FORLDER
 directory = "C:/Users/"+os.environ.get("USERNAME")+"/AppData/LocalLow/10 Chambers Collective/GTFO/"
 
 #JSON DATA BASE
 json_file = open("assets/R2C2_Mapping.json")
 json_data = json.load(json_file)
 
+## LOADING PIL IMAGE SETTINGS
+map_image_list = []
+
+for zone in json_data['zones']:
+    map_image_list.append(Image.open("assets/" + zone['map file']))
+
+locker_png = Image.open("assets/locker.png")
+box_png = Image.open("assets/box.png")
+
 ##CLASSES
 class ID_:
     def __init__(self, index, seed, area, x, y, islocker):
-        self.index = index
-        self.seed = seed
-        self.area = area
-        self.x = x
-        self.y = y
-        self.islocker = islocker
+        self.index_ = index
+        self.seed_ = seed
+        self.area_ = area
+        self.x_ = x
+        self.y_ = y
+        self.islocker_ = islocker
 
     def print_data(self):
-        print("Box Index: {} -> {}".format(self.index, self.area))
+        print("Box Index: {} -> {}".format(self.index_, self.area_))
 
-    def paste_icon(self, background):
+    def draw_container(self, background):
         offset_x = 15
         offset_y = 60
-        if self.index < 10:
+        if self.index_ < 10:
             offset_x = -8
-        if self.islocker:
-            background.paste(locker_png, (self.x, self.y), locker_png)
+        if self.islocker_:
+            background.paste(locker_png, (self.x_, self.y_), locker_png)
         else:
-            background.paste(box_png, (self.x, self.y), box_png)
+            background.paste(box_png, (self.x_, self.y_), box_png)
             offset_y = 20
         draw = ImageDraw.Draw(background)
         font = ImageFont.truetype("assets/OpenSans-Bold.ttf", 64)
-        draw.text((self.x - offset_x, self.y + offset_y),str(self.index),(255,0,0),font=font)
+        draw.text((self.x_ - offset_x, self.y_ + offset_y),str(self.index_),(255,0,0),font=font)
     
     def tojson(self):
         return json.dumps(self.__dict__, indent=4)
 
+class ZONE_:
+    def __init__(self, name, index, type, idlist, image_file):
+        self.name_ = name
+        self.index_ = index
+        self.type_ = type
+        self.idlist_ = idlist
+        self.image_file_ = image_file
+        self.image_ = Image.open("assets/" + image_file)
+    
+    def save_image(self):
+        self.image_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")
 
-#LOADING ZONE 114 IDS
-ID_List_114 = []
+#LOADING JSON DATA
+zone_list = []
 
-for id in json_data['data']['zone 114']:
-    ID_List_114.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], islocker=id['islocker']))
-
-#LOADING ZONE 115 IDS
-ID_List_115 = []
-
-for id in json_data['data']['zone 115']:
-    ID_List_115.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], islocker=id['islocker']))
-
-#LOADING ZONE 118 IDS
-ID_List_118 = []
-
-for id in json_data['data']['zone 118']:
-    ID_List_118.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], islocker=id['islocker']))
-
-#LOADING ZONE 119 IDS
-ID_List_119 = []
-
-for id in json_data['data']['zone 119']:
-    ID_List_119.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], islocker=id['islocker']))
+for zone in json_data['zones']:
+    idlist = []
+    #Loading all IDs
+    for id in zone['data']:
+        idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], islocker=id['islocker']))
+    print("Loading " + zone['name'] + " with map file " + zone['map file'])
+    
+    #Creating ID List for a zone
+    zone_list.append(ZONE_(name=zone['name'], index= zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file']))
 
 listOfLines = []
 seedList = []
@@ -98,57 +99,43 @@ key_id = 0
 for index, value in enumerate(listOfLines):
         
     lineToBeRead = value
-    if (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession"):
+    if (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and json_data['look for key']:
         lineToBeRead = lineToBeRead[30:186]
 
         individualWords = lineToBeRead.split()
         key_id = individualWords[12]
-    if (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen"):
+    if (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and json_data['look for IDs']:
         lineToBeRead = lineToBeRead[15:85]
             
         individualWords = lineToBeRead.split()
         seedList.append(individualWords[2][0:10])
 
-#CHECKING AND GENERATING 115 KEY MAP
-print("KEY ZONE 115:")
-ID_List_115[int(key_id)].print_data()
-ID_List_115[int(key_id)].paste_icon(background_115)
+#CHECKING AND GENERATING KEY MAPS
+if json_data['look for key']:
+    for zone in zone_list:
+        if zone.type_ == "KEY":
+            print("KEY FOUND " + zone.name_ + ':')
+            zone.idlist_[int(key_id)].print_data()
+            zone.idlist_[int(key_id)].draw_container(zone.image_)
 
 valid_id_count = 0
 
-#CHECKING AND GENERATING 114
-print("IDS ZONE 114:")
-for id_game in seedList:
-    for id_check_114 in ID_List_114:
-        if id_game == str(id_check_114.seed):
-            valid_id_count += 1
-            id_check_114.print_data()
-            id_check_114.paste_icon(background_114)
-
-#CHECKING AND GENERATING 118
-print("IDS ZONE 118:")
-for id_game in seedList:
-    for id_check_118 in ID_List_118:
-        if id_game == str(id_check_118.seed):
-            valid_id_count += 1
-            id_check_118.print_data()
-            id_check_118.paste_icon(background_118)
-
-#CHECKING AND GENERATING 119
-print("IDS ZONE 119:")
-for id_game in seedList:
-    for id_check_119 in ID_List_119:
-        if id_game == str(id_check_119.seed):
-            valid_id_count += 1
-            id_check_119.print_data()
-            id_check_119.paste_icon(background_119)
+#CHECKING AND GENERATING ID MAPS
+if json_data['look for IDs']:
+    for zone in zone_list:
+        if zone.type_ == "ID":
+            print("IDS FOUND " + zone.name_ + ':')
+            for id_game in seedList:
+                for id_check in zone.idlist_:
+                    if id_game == str(id_check.seed_):
+                        valid_id_count += 1
+                        id_check.print_data()
+                        id_check.draw_container(zone.image_)
 
 if valid_id_count >= 7:
     print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
 else:
     print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
 
-background_114.save("ZONE_114_GENERATED.png")
-background_115.save("ZONE_115_GENERATED.png")
-background_118.save("ZONE_118_GENERATED.png")
-background_119.save("ZONE_119_GENERATED.png")
+for zone in zone_list:
+    zone.save_image()
