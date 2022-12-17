@@ -2,6 +2,7 @@
 ####      MADE BY ARCHI       ####
 
 import os
+import sys
 import json
 from PIL import Image
 from PIL import ImageFont
@@ -9,16 +10,20 @@ from PIL import ImageDraw
 
 #PATH TO YOUR GTFO APPDATA FORLDER
 directory = "C:/Users/"+os.environ.get("USERNAME")+"/AppData/LocalLow/10 Chambers Collective/GTFO/"
+if len(sys.argv) == 1:
+    print("Please indicate package (level) name.")
+    exit()
+package_name = sys.argv[1]
 
 #JSON DATA BASE
-json_file = open("assets/R2C2_Mapping.json")
+json_file = open(package_name + '/' + package_name + ".json")
 json_data = json.load(json_file)
 
 ## LOADING PIL IMAGE SETTINGS
 map_image_list = []
 
 for zone in json_data['zones']:
-    map_image_list.append(Image.open("assets/" + zone['map file']))
+    map_image_list.append(Image.open(package_name + '/' + zone['map file']))
 
 locker_png = Image.open("assets/locker.png")
 box_png = Image.open("assets/box.png")
@@ -72,7 +77,7 @@ class ZONE_:
         self.type_ = type
         self.idlist_ = idlist
         self.image_file_ = image_file
-        self.image_ = Image.open("assets/" + image_file)
+        self.image_ = Image.open(package_name + '/' + image_file)
     
     def save_image(self):
         self.image_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")

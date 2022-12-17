@@ -166,7 +166,7 @@
                     "x": 1180,
                     "y": 630,
                     "z":-1,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": true
                 },
                 {
@@ -276,7 +276,7 @@
                     "x": 1530,
                     "y": 650,
                     "z":0,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": true
                 },
                 {
@@ -286,7 +286,7 @@
                     "x": 1350,
                     "y": 920,
                     "z":0,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": false
                 },
                 {
@@ -316,7 +316,7 @@
                     "x": 1100,
                     "y": 200,
                     "z":-1,
-                    "lock": 0,
+                    "lock": 1,
                     "islocker": true
                 },
                 {
@@ -354,7 +354,7 @@
                     "x": 215,
                     "y": 255,
                     "z":1,
-                    "lock": 0,
+                    "lock": 1,
                     "islocker": true
                 },
                 {
@@ -425,7 +425,7 @@
                     "x": 120,
                     "y": 25,
                     "z":0,
-                    "lock": 0,
+                    "lock": 1,
                     "islocker": true
                 },
                 {
@@ -445,7 +445,7 @@
                     "x": 625,
                     "y": 330,
                     "z":0,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": false
                 },
                 {
@@ -475,7 +475,7 @@
                     "x": 520,
                     "y": 30,
                     "z":0,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": true
                 },
                 {
@@ -485,7 +485,7 @@
                     "x": 425,
                     "y": 335,
                     "z":-1,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": false
                 },
                 {
@@ -495,7 +495,7 @@
                     "x": 575,
                     "y": 360,
                     "z":1,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": false
                 },
                 {
@@ -525,7 +525,7 @@
                     "x": 285,
                     "y": 165,
                     "z":0,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": true
                 },
                 {
@@ -544,7 +544,7 @@
                     "area": "B",
                     "x": 405,
                     "y": 315,
-                    "z":1,
+                    "z":0,
                     "lock": 0,
                     "islocker": false
                 },
@@ -575,7 +575,7 @@
                     "x": 565,
                     "y": 330,
                     "z":-1,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": false
                 }
             ]
@@ -623,7 +623,7 @@
                     "x": 840,
                     "y": 100,
                     "z":0,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": true
                 },
                 {
@@ -663,7 +663,7 @@
                     "x": 70,
                     "y": 460,
                     "z":-1,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": true
                 },
                 {
@@ -712,7 +712,7 @@
                     "area": "C",
                     "x": 100,
                     "y": 1080,
-                    "z":0,
+                    "z":-1,
                     "lock": 0,
                     "islocker": true
                 },
@@ -743,7 +743,7 @@
                     "x": 270,
                     "y": 940,
                     "z":-1,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": true
                 },
                 {
@@ -913,7 +913,7 @@
                     "x": 380,
                     "y": 635,
                     "z":0,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": true
                 }
             ]
@@ -951,7 +951,7 @@
                     "x": 1080,
                     "y": 730,
                     "z":0,
-                    "lock": 0,
+                    "lock": 1,
                     "islocker": false
                 },
                 {
@@ -1151,7 +1151,7 @@
                     "x": 270,
                     "y": 1270,
                     "z":0,
-                    "lock": 0,
+                    "lock": 2,
                     "islocker": false
                 },
                 {
