@@ -98,6 +98,7 @@ for zone in json_data['zones']:
 listOfLines = []
 seedList = []
 keyList = []
+cargoList = []
 netstatus_files = []
 
 #FINDING LATEST NETSTATUS IN GTFO DIRECTORY
@@ -111,16 +112,22 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
         break
     listOfLines.append(line)
 
-#ENUMERATING IDS AND KEYS
+#ENUMERATING CARGOS, KEYS, AND IDS
 for index, value in enumerate(listOfLines):
         
     lineToBeRead = value
-    if (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and json_data['look for key']:
+
+    if (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and json_data['look for cargo']:
+        lineToBeRead = lineToBeRead[30:173]
+        
+        individualWords = lineToBeRead.split()
+        print("CARGO FOUND AT " + individualWords[5])
+    elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and json_data['look for key']:
         lineToBeRead = lineToBeRead[30:186]
 
         individualWords = lineToBeRead.split()
         keyList.append(individualWords[12])
-    if (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and json_data['look for IDs']:
+    elif (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and json_data['look for IDs']:
         lineToBeRead = lineToBeRead[15:85]
             
         individualWords = lineToBeRead.split()
