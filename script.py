@@ -97,6 +97,7 @@ for zone in json_data['zones']:
 
 listOfLines = []
 seedList = []
+keyList = []
 netstatus_files = []
 
 #FINDING LATEST NETSTATUS IN GTFO DIRECTORY
@@ -110,8 +111,6 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
         break
     listOfLines.append(line)
 
-key_id = 0
-
 #ENUMERATING IDS AND KEYS
 for index, value in enumerate(listOfLines):
         
@@ -120,7 +119,7 @@ for index, value in enumerate(listOfLines):
         lineToBeRead = lineToBeRead[30:186]
 
         individualWords = lineToBeRead.split()
-        key_id = individualWords[12]
+        keyList.append(individualWords[12])
     if (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and json_data['look for IDs']:
         lineToBeRead = lineToBeRead[15:85]
             
@@ -131,28 +130,29 @@ for index, value in enumerate(listOfLines):
 if json_data['look for key']:
     for zone in zone_list:
         if zone.type_ == "KEY":
-            print("KEY FOUND " + zone.name_ + ':')
-            zone.idlist_[int(key_id)].print_data()
-            zone.idlist_[int(key_id)].draw_container(zone.image_)
-
-valid_id_count = 0
+            for key_log in keyList:
+                print("KEY FOUND " + zone.name_ + ':')
+                zone.idlist_[int(key_log)].print_data()
+                zone.idlist_[int(key_log)].draw_container(zone.image_)
 
 #CHECKING AND GENERATING ID MAPS
 if json_data['look for IDs']:
+    valid_id_count = 0
+
     for zone in zone_list:
         if zone.type_ == "ID":
             print("IDS FOUND " + zone.name_ + ':')
-            for id_game in seedList:
+            for id_log in seedList:
                 for id_check in zone.idlist_:
-                    if id_game == str(id_check.seed_):
+                    if id_log == str(id_check.seed_):
                         valid_id_count += 1
                         id_check.print_data()
                         id_check.draw_container(zone.image_)
 
-if valid_id_count >= 7:
-    print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
-else:
-    print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
+    if valid_id_count >= 7:
+        print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
+    else:
+        print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
 
 for zone in zone_list:
     zone.save_image()

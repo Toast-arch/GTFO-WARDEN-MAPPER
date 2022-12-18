@@ -1,4 +1,5 @@
 import cv2
+import sys
 
 def Capture_Event(event, x, y, flags, params):
 	# If the left mouse button is pressed
@@ -10,7 +11,7 @@ def Capture_Event(event, x, y, flags, params):
 # The Main Function
 if __name__=="__main__":
 	# Read the Image.
-	img = cv2.imread('ZONE_118.png', 1)
+	img = cv2.imread('ZONE_103.png', 1)
 	# Show the Image
 	cv2.imshow('image', img)
 	# Set the Mouse Callback function, and call

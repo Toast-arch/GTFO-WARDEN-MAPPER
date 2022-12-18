@@ -1,0 +1,255 @@
+{
+    "name":"R2A1",
+    "look for key": true,
+    "look for IDs": false,
+    "zones":[
+        {
+            "name": "ZONE 103",
+            "index": 0,
+            "type": "KEY",
+            "map file": "ZONE_103.png",
+            "data":[
+                {
+                    "index": 0,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 1,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 2,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 3,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 4,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 5,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 6,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 7,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 8,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 9,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 10,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 11,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 12,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 13,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 14,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 15,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 16,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 17,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 18,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 19,
+                    "seed": 0,
+                    "area": "E",
+                    "x": 60,
+                    "y": 680,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 20,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 21,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 22,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 23,
+                    "seed": 0,
+                    "area": "A",
+                    "x": 0,
+                    "y": 0,
+                    "z":0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        }
+    ]
+}
