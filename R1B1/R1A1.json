@@ -1,0 +1,16 @@
+{
+    "name": "R2A1",
+    "look for key": true,
+    "look for IDs": false,
+    "look for cargo": true,
+    "zones": [
+        {
+            "name": "ZONE 50",
+            "index": 0,
+            "type": "KEY",
+            "map file": "",
+            "data": []
+        }
+    ],
+    "seed learning data": []
+}

@@ -11,31 +11,59 @@ from PIL import ImageDraw
 #PATH TO YOUR GTFO APPDATA FORLDER
 directory = "C:/Users/" + os.environ.get("USERNAME") + "/AppData/LocalLow/10 Chambers Collective/GTFO/"
 
+class ARG_:
+    def __init__(self, key, arg_list=[]):
+        self.key_ = key
+        self.arg_list_ = arg_list
+
 #ARGUMENT READING
 if len(sys.argv) == 1:
     print("Please indicate package (level) name.")
     exit()
 
 arg_list = []
-notarg_list = []
+i = 0
 
-for word in sys.argv[1:]:
-    if word[0] == '-':
-        arg_list.append(word[1:])
+while i < len(sys.argv):
+    if sys.argv[i][0] == '-':
+        new_key = sys.argv[i]
+        new_arg_list = []
+        i += 1
+        while i < len(sys.argv) and sys.argv[i][0] != '-':
+            new_arg_list.append(sys.argv[i])
+            i += 1
+        arg_list.append(ARG_(key=new_key, arg_list=new_arg_list))
     else:
-        notarg_list.append(word)
+        arg_list.append(ARG_(key=sys.argv[i]))
+        i += 1
 
-package_name = notarg_list[0]
+package_name = arg_list[1].key_
+nofile = False
+nomap = False
+learning = False
+learning_input = False
+
+for arg in arg_list:
+    if arg.key_ == '--nofile':
+        nofile = True
+    if arg.key_ == '--nomap' or nofile:
+        nomap = True
+    if arg.key_ == '-L':
+        learning_input = True
+    if arg.key_ == '-l' or learning_input:
+        learning = True
 
 #JSON DATA BASE
-json_file = open(package_name + '/' + package_name + ".json", 'r+')
-json_data = json.load(json_file)
+if not nofile:
+    json_file = open(package_name + '/' + package_name + ".json", 'r+')
+    json_data = json.load(json_file)
 
 ## LOADING PIL IMAGE SETTINGS
 map_image_list = []
 
-for zone in json_data['zones']:
-    map_image_list.append(Image.open(package_name + '/' + zone['map file']))
+if not nomap:
+    for zone in json_data['zones']:
+        map_image_list.append(Image.open(package_name + '/' + zone['map file']))
 
 locker_png = Image.open("assets/locker.png")
 box_png = Image.open("assets/box.png")
@@ -94,25 +122,31 @@ class ZONE_:
     def save_image(self):
         self.image_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")
 
-#LOADING JSON DATA
 zone_list = []
-
-for zone in json_data['zones']:
-    idlist = []
-    #Loading all IDs
-    for id in zone['data']:
-        idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker']))
-    print("Loading " + zone['name'] + " with map file " + zone['map file'])
-    
-    #Creating ID List for a zone
-    zone_list.append(ZONE_(name=zone['name'], index= zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file']))
-
 listOfLines = []
 seedList = []
 keyList = []
+keyZoneList = []
 cargozoneList = []
 netstatus_files = []
 SessionSeed = None
+
+look_for_cargo = nofile or json_data['look for cargo']
+look_for_cell = nofile or json_data['look for cell']
+look_for_key = nofile or json_data['look for key']
+look_for_ids = nofile or json_data['look for IDs']
+
+#LOADING JSON DATA
+if not nofile:
+    for zone in json_data['zones']:
+        idlist = []
+        #Loading all IDs
+        for id in zone['data']:
+            idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker']))
+        print("Loading " + zone['name'] + " with map file " + zone['map file'])
+        
+        #Creating ID List for a zone
+        zone_list.append(ZONE_(name=zone['name'], index= zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file']))
 
 #FINDING LATEST NETSTATUS IN GTFO DIRECTORY
 for i in os.listdir(directory):
@@ -129,30 +163,40 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
 for index, value in enumerate(listOfLines):
         
     lineToBeRead = value
-    if (lineToBeRead[46:55] == "GENERATE!" and ('l' in arg_list or 'L' in arg_list)):
+    if lineToBeRead[46:55] == "GENERATE!" and learning:
         lineToBeRead = lineToBeRead[46:]
 
         individualWords = lineToBeRead.split()
         SessionSeed = individualWords[2][:-8]
-    elif (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and json_data['look for cargo']:
+    elif (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and (look_for_cargo or look_for_cell):
         lineToBeRead = lineToBeRead[30:173]
         
         individualWords = lineToBeRead.split()
         cargozoneList.append(individualWords[5])
-        print("CARGO FOUND AT " + individualWords[5])
-    elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and json_data['look for key']:
+        if look_for_cargo and look_for_cell:
+            print("CELL or CARGO ", end='')
+        elif look_for_cargo:
+            print("CARGO ", end='')
+        elif look_for_cell:
+            print("CELL ", end='')
+        print("FOUND AT " + individualWords[5][:4] + ' ' + individualWords[5][4:])
+    elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and look_for_key:
         lineToBeRead = lineToBeRead[30:186]
 
         individualWords = lineToBeRead.split()
         keyList.append(individualWords[12])
-    elif (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and json_data['look for IDs']:
+        keyZoneList.append(individualWords[4])
+    elif (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and look_for_ids:
         lineToBeRead = lineToBeRead[15:85]
             
         individualWords = lineToBeRead.split()
         seedList.append(individualWords[2][0:10])
 
 #CHECKING AND GENERATING KEY MAPS
-if json_data['look for key']:
+if look_for_key:
+    if nofile:
+        for i in range(len(keyZoneList)):
+            print("KEY FOUND AT " + keyZoneList[i][:4] + ' ' + keyZoneList[i][4:] + " -> " + keyList[i])
     for zone in zone_list:
         if zone.type_ == "KEY":
             for key_log in keyList:
@@ -161,27 +205,29 @@ if json_data['look for key']:
                 zone.idlist_[int(key_log)].draw_container(zone.image_)
 
 #CHECKING AND GENERATING ID MAPS
-if json_data['look for IDs']:
-    valid_id_count = 0
+if not nofile:
+    if json_data['look for IDs']:
+        valid_id_count = 0
 
-    for zone in zone_list:
-        if zone.type_ == "ID":
-            print("IDS FOUND " + zone.name_ + ':')
-            for id_log in seedList:
-                for id_check in zone.idlist_:
-                    if id_log == str(id_check.seed_):
-                        valid_id_count += 1
-                        id_check.print_data()
-                        id_check.draw_container(zone.image_)
+        for zone in zone_list:
+            if zone.type_ == "ID":
+                print("IDS FOUND " + zone.name_ + ':')
+                for id_log in seedList:
+                    for id_check in zone.idlist_:
+                        if id_log == str(id_check.seed_):
+                            valid_id_count += 1
+                            id_check.print_data()
+                            id_check.draw_container(zone.image_)
 
-    if valid_id_count >= 7:
-        print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
-    else:
-        print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
+        if valid_id_count >= 7:
+            print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
+        else:
+            print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
 
 #SAVE ALL IMAGES
-for zone in zone_list:
-    zone.save_image()
+if not nomap:
+    for zone in zone_list:
+        zone.save_image()
 
 #SEED LEARNING !!! WIP !!!
 if SessionSeed:
@@ -198,7 +244,7 @@ if SessionSeed:
                 exit()
 
     #HARDCODED FOPR R2A1
-    if 'L' in arg_list:
+    if learning_input:
         print('\033[93m' + "Learning seed: " + SessionSeed + '\033[0m')
         for cargozone in cargozoneList:
             print("Cargo " + cargozone + ": ", end='')

@@ -3,6 +3,7 @@
     "look for key": true,
     "look for IDs": false,
     "look for cargo": true,
+    "look for cell": false,
     "zones": [
         {
             "name": "ZONE 103",
