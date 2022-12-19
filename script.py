@@ -129,7 +129,7 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
 for index, value in enumerate(listOfLines):
         
     lineToBeRead = value
-    if (lineToBeRead[46:55] == "GENERATE!" and 'l' in arg_list):
+    if (lineToBeRead[46:55] == "GENERATE!" and ('l' in arg_list or 'L' in arg_list)):
         lineToBeRead = lineToBeRead[46:]
 
         individualWords = lineToBeRead.split()
@@ -197,7 +197,8 @@ if SessionSeed:
                 print(json_formatted_str)
                 exit()
 
-    if 'cargo' in notarg_list:
+    #HARDCODED FOPR R2A1
+    if 'L' in arg_list:
         print('\033[93m' + "Learning seed: " + SessionSeed + '\033[0m')
         for cargozone in cargozoneList:
             print("Cargo " + cargozone + ": ", end='')
@@ -206,7 +207,9 @@ if SessionSeed:
                 print("Learning cancelled...")
                 exit()
             learn_input_list.append((cargozone, learn_input))
-    
+    else:
+        exit()
+
     json_object = {"seed": int(SessionSeed)}
 
     for learn_input in learn_input_list:
