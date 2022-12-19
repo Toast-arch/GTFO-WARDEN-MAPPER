@@ -9,14 +9,26 @@ from PIL import ImageFont
 from PIL import ImageDraw
 
 #PATH TO YOUR GTFO APPDATA FORLDER
-directory = "C:/Users/"+os.environ.get("USERNAME")+"/AppData/LocalLow/10 Chambers Collective/GTFO/"
+directory = "C:/Users/" + os.environ.get("USERNAME") + "/AppData/LocalLow/10 Chambers Collective/GTFO/"
+
+#ARGUMENT READING
 if len(sys.argv) == 1:
     print("Please indicate package (level) name.")
     exit()
-package_name = sys.argv[1]
+
+arg_list = []
+notarg_list = []
+
+for word in sys.argv[1:]:
+    if word[0] == '-':
+        arg_list.append(word[1:])
+    else:
+        notarg_list.append(word)
+
+package_name = notarg_list[0]
 
 #JSON DATA BASE
-json_file = open(package_name + '/' + package_name + ".json")
+json_file = open(package_name + '/' + package_name + ".json", 'r+')
 json_data = json.load(json_file)
 
 ## LOADING PIL IMAGE SETTINGS
@@ -98,8 +110,9 @@ for zone in json_data['zones']:
 listOfLines = []
 seedList = []
 keyList = []
-cargoList = []
+cargozoneList = []
 netstatus_files = []
+SessionSeed = None
 
 #FINDING LATEST NETSTATUS IN GTFO DIRECTORY
 for i in os.listdir(directory):
@@ -108,7 +121,7 @@ for i in os.listdir(directory):
 
 #FINDING LAST RUN LOG
 for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1], 'r', encoding='utf-8').readlines()):
-    if "CreateKeyItemDistribution" in line:
+    if "SetBuildSeed, forcedSeed" in line:
         break
     listOfLines.append(line)
 
@@ -116,11 +129,16 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
 for index, value in enumerate(listOfLines):
         
     lineToBeRead = value
+    if (lineToBeRead[46:55] == "GENERATE!" and 'l' in arg_list):
+        lineToBeRead = lineToBeRead[46:]
 
-    if (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and json_data['look for cargo']:
+        individualWords = lineToBeRead.split()
+        SessionSeed = individualWords[2][:-8]
+    elif (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and json_data['look for cargo']:
         lineToBeRead = lineToBeRead[30:173]
         
         individualWords = lineToBeRead.split()
+        cargozoneList.append(individualWords[5])
         print("CARGO FOUND AT " + individualWords[5])
     elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and json_data['look for key']:
         lineToBeRead = lineToBeRead[30:186]
@@ -161,5 +179,39 @@ if json_data['look for IDs']:
     else:
         print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
 
+#SAVE ALL IMAGES
 for zone in zone_list:
     zone.save_image()
+
+#SEED LEARNING !!! WIP !!!
+if SessionSeed:
+    learn_input_list = []
+
+    if 'seed learning data' not in json_data:
+        json_data['seed learning data'] = []
+    else:
+        for seed_data in json_data['seed learning data']:
+            if str(seed_data['seed']) == SessionSeed:
+                print('\033[92m' + "SEED FOUND IN LEARNING DATA: " + SessionSeed + '\033[0m')
+                json_formatted_str = json.dumps(seed_data, indent=2)
+                print(json_formatted_str)
+                exit()
+
+    if 'cargo' in notarg_list:
+        print('\033[93m' + "Learning seed: " + SessionSeed + '\033[0m')
+        for cargozone in cargozoneList:
+            print("Cargo " + cargozone + ": ", end='')
+            learn_input = input()
+            if learn_input == "":
+                print("Learning cancelled...")
+                exit()
+            learn_input_list.append((cargozone, learn_input))
+    
+    json_object = {"seed": int(SessionSeed)}
+
+    for learn_input in learn_input_list:
+        json_object[learn_input[0]] = learn_input[1]
+
+    json_data['seed learning data'].append(json_object)
+    json_file.seek(0)
+    json.dump(json_data, json_file, indent=4)
