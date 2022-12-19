@@ -1,6 +1,6 @@
 # GTFO-WARDEN-MAPPER
 
-GTFO WARDEN MAPPER is a GTFO log reading scripting meant for speedrunning.
+GTFO WARDEN MAPPER is a GTFO log reading script meant for speedrunning.
 
 It can be used with or without level specific packages that enhance log analyis and mapping output.
 
