@@ -5,17 +5,17 @@ import os
 import sys
 import json
 from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
+
+from assets.dataclasses import ID_, ZONE_, ARG_
 
 #PATH TO YOUR GTFO APPDATA FORLDER
 directory = "C:/Users/" + os.environ.get("USERNAME") + "/AppData/LocalLow/10 Chambers Collective/GTFO/"
 
-#ARGUMENT READING
+""" #ARGUMENT READING
 class ARG_:
     def __init__(self, key, arg_list=[]):
         self.key_ = key
-        self.arg_list_ = arg_list
+        self.arg_list_ = arg_list """
 
 if len(sys.argv) == 1:
     print("Please indicate package (level) name.")
@@ -67,7 +67,7 @@ if not nofile:
 locker_png = Image.open("assets/locker.png")
 box_png = Image.open("assets/box.png")
 
-##CLASSES
+""" ##CLASSES
 class ID_:
     def __init__(self, index, seed, area, x, y, z, lock, islocker):
         self.index_ = index
@@ -119,7 +119,7 @@ class ZONE_:
         self.image_ = Image.open("packages/" + package_name + '/' + image_file)
     
     def save_image(self):
-        self.image_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")
+        self.image_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png") """
 
 zone_list = []
 listOfLines = []
@@ -142,10 +142,9 @@ if not nofile:
         #Loading all IDs
         for id in zone['data']:
             idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker']))
-        print("Loading " + zone['name'] + " with map file " + zone['map file'])
         
         #Creating ID List for a zone
-        zone_list.append(ZONE_(name=zone['name'], index= zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file']))
+        zone_list.append(ZONE_(name=zone['name'], index= zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file'], package_name=package_name))
 
 #FINDING LATEST NETSTATUS IN GTFO DIRECTORY
 for i in os.listdir(directory):
@@ -193,6 +192,8 @@ for index, value in enumerate(listOfLines):
             print("Neonate HSU", end='')
         elif wardenitemID == 151:
             print("Data sphere", end='')
+        elif wardenitemID == 169:
+            print("GLP", end='')
         elif wardenitemID == 164 or wardenitemID == 166:
             print("Matter wave projector", end='')
         elif wardenitemID == 176 or wardenitemID == 138:
@@ -231,9 +232,9 @@ if look_for_key:
     for zone in zone_list:
         if zone.type_ == "KEY":
             for i in range(len(keyriList)):
-                print(keynameList[i] + " found " + zone.name_ + ':')
+                print(keynameList[i] + " found in " + zone.name_ + ':')
                 zone.idlist_[int(keyriList[i])].print_data()
-                zone.idlist_[int(keyriList[i])].draw_container(zone.image_)
+                zone.idlist_[int(keyriList[i])].draw_container(zone.image_, locker_png, box_png)
 
 #CHECKING AND GENERATING ID MAPS
 if not nofile:
@@ -248,7 +249,7 @@ if not nofile:
                         if id_log == str(id_check.seed_):
                             valid_id_count += 1
                             id_check.print_data()
-                            id_check.draw_container(zone.image_)
+                            id_check.draw_container(zone.image_, locker_png, box_png)
 
         if valid_id_count >= 7:
             print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
@@ -278,8 +279,7 @@ if SessionSeed:
     if learning_input:
         print('\033[93m' + "Learning seed: " + SessionSeed + '\033[0m')
         for cargozone in cargozoneList:
-            print("Cargo " + cargozone + ": ", end='')
-            learn_input = input()
+            learn_input = input("Cargo " + cargozone + ": ")
             if learn_input == "":
                 print("Learning cancelled...")
                 exit()

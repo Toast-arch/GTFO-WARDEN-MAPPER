@@ -1,0 +1,63 @@
+{
+    "name": "R7C1",
+    "look for key": false,
+    "look for IDs": false,
+    "look for pickup": false,
+    "zones": [
+        {
+            "name": "ZONE 14",
+            "index": 0,
+            "type": "GLP",
+            "map file": "ZONE_14.png",
+            "data": [
+                {
+                    "index": 1,
+                    "seed": 35151131,
+                    "area": "A",
+                    "x": 562,
+                    "y": 797,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        },
+        {
+            "name": "ZONE 14",
+            "index": 0,
+            "type": "GLP",
+            "map file": "ZONE_14.png",
+            "data": [
+                {
+                    "index": 1,
+                    "seed": 3135131,
+                    "area": "A",
+                    "x": 552,
+                    "y": 801,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        },
+        {
+            "name": "ZONE 14",
+            "index": 0,
+            "type": "GLP",
+            "map file": "ZONE_14.png",
+            "data": [
+                {
+                    "index": 1,
+                    "seed": 3615631351,
+                    "area": "A",
+                    "x": 549,
+                    "y": 797,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        }
+    ],
+    "seed learning data": []
+}
