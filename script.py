@@ -56,8 +56,12 @@ for arg in arg_list:
 
 #PACKAGE JSON FILE
 if not nofile:
-    json_file = open("packages/" + package_name + '/' + package_name + ".json", 'r+')
-    json_data = json.load(json_file)
+    try:
+        json_file = open("packages/" + package_name + '/' + package_name + ".json", 'r+')
+        json_data = json.load(json_file)
+    except IOError:
+        print("No file found for " + package_name)
+        exit()
 
 ## LOADING PIL IMAGE ASSETS
 locker_png = Image.open("assets/locker.png")
