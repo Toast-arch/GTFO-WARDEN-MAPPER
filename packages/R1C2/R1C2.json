@@ -2,6 +2,6 @@
     "name":"R1C2",
     "look for key": false,
     "look for IDs": false,
-    "look for cargo": false,
+    "look for pickup": false,
     "zones":[]
 }

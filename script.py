@@ -11,12 +11,12 @@ from PIL import ImageDraw
 #PATH TO YOUR GTFO APPDATA FORLDER
 directory = "C:/Users/" + os.environ.get("USERNAME") + "/AppData/LocalLow/10 Chambers Collective/GTFO/"
 
+#ARGUMENT READING
 class ARG_:
     def __init__(self, key, arg_list=[]):
         self.key_ = key
         self.arg_list_ = arg_list
 
-#ARGUMENT READING
 if len(sys.argv) == 1:
     print("Please indicate package (level) name.")
     exit()
@@ -43,6 +43,7 @@ nomap = False
 learning = False
 learning_input = False
 
+#ARGUMENT APPLY
 for arg in arg_list:
     if arg.key_ == '--nofile':
         nofile = True
@@ -53,18 +54,12 @@ for arg in arg_list:
     if arg.key_ == '-l' or learning_input:
         learning = True
 
-#JSON DATA BASE
+#PACKAGE JSON FILE
 if not nofile:
-    json_file = open(package_name + '/' + package_name + ".json", 'r+')
+    json_file = open("packages/" + package_name + '/' + package_name + ".json", 'r+')
     json_data = json.load(json_file)
 
-## LOADING PIL IMAGE SETTINGS
-map_image_list = []
-
-if not nomap:
-    for zone in json_data['zones']:
-        map_image_list.append(Image.open(package_name + '/' + zone['map file']))
-
+## LOADING PIL IMAGE ASSETS
 locker_png = Image.open("assets/locker.png")
 box_png = Image.open("assets/box.png")
 
@@ -117,7 +112,7 @@ class ZONE_:
         self.type_ = type
         self.idlist_ = idlist
         self.image_file_ = image_file
-        self.image_ = Image.open(package_name + '/' + image_file)
+        self.image_ = Image.open("packages/" + package_name + '/' + image_file)
     
     def save_image(self):
         self.image_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")
@@ -125,14 +120,14 @@ class ZONE_:
 zone_list = []
 listOfLines = []
 seedList = []
-keyList = []
+keyriList = []
+keynameList = []
 keyZoneList = []
 cargozoneList = []
 netstatus_files = []
 SessionSeed = None
 
-look_for_cargo = nofile or json_data['look for cargo']
-look_for_cell = nofile or json_data['look for cell']
+look_for_pickup = nofile or json_data['look for pickup']
 look_for_key = nofile or json_data['look for key']
 look_for_ids = nofile or json_data['look for IDs']
 
@@ -160,31 +155,63 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
     listOfLines.append(line)
 
 #ENUMERATING CARGOS, KEYS, AND IDS
+wardenitemID = 0
+
 for index, value in enumerate(listOfLines):
         
     lineToBeRead = value
+
     if lineToBeRead[46:55] == "GENERATE!" and learning:
         lineToBeRead = lineToBeRead[46:]
 
         individualWords = lineToBeRead.split()
         SessionSeed = individualWords[2][:-8]
-    elif (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and (look_for_cargo or look_for_cell):
+    elif (lineToBeRead[30:89] == "LG_Distribute_WardenObjective.DistributeGatherRetrieveItems" and look_for_pickup):
+        lineToBeRead = lineToBeRead[30:]
+
+        individualWords = lineToBeRead.split()
+        wardenitemID = int(individualWords[6])
+    elif (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and look_for_pickup:
         lineToBeRead = lineToBeRead[30:173]
         
         individualWords = lineToBeRead.split()
         cargozoneList.append(individualWords[5])
-        if look_for_cargo and look_for_cell:
-            print("CELL or CARGO ", end='')
-        elif look_for_cargo:
-            print("CARGO ", end='')
-        elif look_for_cell:
-            print("CELL ", end='')
-        print("FOUND AT " + individualWords[5][:4] + ' ' + individualWords[5][4:])
+
+        if wardenitemID == 128:
+            print("ID", end='')
+        elif wardenitemID == 129:
+            print("PD", end='')
+        elif wardenitemID == 131:
+            print("Cell", end='')
+        elif wardenitemID == 133:
+            print("Fog turbine", end='')
+        elif wardenitemID == 137 or wardenitemID == 141 or wardenitemID == 143 or wardenitemID == 145 or wardenitemID == 175 or wardenitemID == 170:
+            print("Neonate HSU", end='')
+        elif wardenitemID == 151:
+            print("Data sphere", end='')
+        elif wardenitemID == 164 or wardenitemID == 166:
+            print("Matter wave projector", end='')
+        elif wardenitemID == 176 or wardenitemID == 138:
+            print("Cargo", end='')
+        elif wardenitemID == 154 or wardenitemID == 155:
+            print("HISEC Cargo", end='')
+        elif wardenitemID == 148:
+            print("Cryo", end='')
+        elif wardenitemID == 173:
+            print("Collection case", end='')
+        else:
+            print("Terminal", end='')
+        print(" found in " + individualWords[5][:4] + ' ' + individualWords[5][4:])
+    elif (lineToBeRead[35:56] == "CalcAreaWeights START") and look_for_key:
+        lineToBeRead = lineToBeRead[35:]
+
+        individualWords = lineToBeRead.split()
+        keynameList.append(individualWords[4])
     elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and look_for_key:
         lineToBeRead = lineToBeRead[30:186]
 
         individualWords = lineToBeRead.split()
-        keyList.append(individualWords[12])
+        keyriList.append(individualWords[12])
         keyZoneList.append(individualWords[4])
     elif (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and look_for_ids:
         lineToBeRead = lineToBeRead[15:85]
@@ -196,13 +223,13 @@ for index, value in enumerate(listOfLines):
 if look_for_key:
     if nofile:
         for i in range(len(keyZoneList)):
-            print("KEY FOUND AT " + keyZoneList[i][:4] + ' ' + keyZoneList[i][4:] + " -> " + keyList[i])
+            print(keynameList[i] + " found in " + keyZoneList[i][:4] + ' ' + keyZoneList[i][4:] + " -> " + keyriList[i])
     for zone in zone_list:
         if zone.type_ == "KEY":
-            for key_log in keyList:
-                print("KEY FOUND " + zone.name_ + ':')
-                zone.idlist_[int(key_log)].print_data()
-                zone.idlist_[int(key_log)].draw_container(zone.image_)
+            for i in range(len(keyriList)):
+                print(keynameList[i] + " found " + zone.name_ + ':')
+                zone.idlist_[int(keyriList[i])].print_data()
+                zone.idlist_[int(keyriList[i])].draw_container(zone.image_)
 
 #CHECKING AND GENERATING ID MAPS
 if not nofile:

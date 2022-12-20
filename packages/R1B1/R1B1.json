@@ -1,8 +1,8 @@
 {
-    "name": "R2B1",
+    "name": "R1B1",
     "look for key": true,
     "look for IDs": false,
-    "look for cargo": true,
+    "look for pickup": true,
     "zones": [],
     "seed learning data": []
 }

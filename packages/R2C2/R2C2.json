@@ -2,7 +2,7 @@
     "name":"R2C2",
     "look for key": true,
     "look for IDs": true,
-    "look for cargo": false,
+    "look for pickup": false,
     "zones":[
         {
             "name": "ZONE 114",

@@ -2,8 +2,7 @@
     "name": "R2A1",
     "look for key": true,
     "look for IDs": false,
-    "look for cargo": true,
-    "look for cell": false,
+    "look for pickup": true,
     "zones": [
         {
             "name": "ZONE 103",
