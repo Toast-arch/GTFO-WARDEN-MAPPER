@@ -14,6 +14,11 @@ REQUIREMENTS:
  - python PIL : install with "pip install pillow"
 
 HOW TO USE :
-- Run the script a couple seconds after the level has started (try again a couple seconds later still if no result or less than 6 valid IDs)
-- Go to the _GENERATED images for results
-- Run the script with --help option for more info
+- Run the script a couple seconds after the level has started (try again a couple seconds later still if no result or less than 6 valid IDs).
+- Go to the _GENERATED images for results if level specific package is available.
+- If the game level you want to map has an incomplete or missing file, run the script with --nofile option.
+- Run the script with --help option for more info.
+
+EXAMPLE :
+- Playing R2C2 -> "py warden-mapper.py R2C2"
+- Playing any level with no file -> "py warden-mapper.py --nofile"

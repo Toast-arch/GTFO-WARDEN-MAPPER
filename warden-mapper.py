@@ -39,6 +39,14 @@ learning_input = False
 
 #ARGUMENT APPLY
 for arg in arg_list:
+    if arg.key_ == '--help':
+        print("usage: warden-mapper.py <package name> [--help] [--nofile] [--nomap] [-l | -L]")
+        print()
+        print("   nofile\tRemoves the requirement for a package file. Warden mapper will output anything it finds in the terminal.")
+        print("   nomap\tDo not create map images.")
+        print("   l\t\tLook for seed in seed learning data.")
+        print("   L\t\tAdvanced seed learning option. Will prompt for data to be mapped to sessionseed.")
+        exit()
     if arg.key_ == '--nofile':
         nofile = True
     if arg.key_ == '--nomap' or nofile:
