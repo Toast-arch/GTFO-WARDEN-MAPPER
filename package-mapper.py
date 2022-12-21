@@ -32,9 +32,19 @@ def open_cv_window():
    cv2.waitKey(0)
    cv2.destroyAllWindows()
 
-def reset_preview(open_path, save_path):
+def overwrite_image_PIL(open_path, save_path):
    background = Image.open(open_path)
    background.save(save_path)
+
+def draw_container_on_image(findex, fx, fy, fz, flock, fislocker, fbackground_img_path, fsave):
+   
+   id = ID_(index=findex, x=fx, y=fy, z=fz, lock=flock, islocker=fislocker)
+
+   background = Image.open(fbackground_img_path)
+
+   id.draw_container(background=background, locker_png=locker_png, box_png=box_png)
+
+   background.save(fsave)
 
 if __name__=="__main__":
    #ARGUMENT READING
@@ -109,6 +119,15 @@ if __name__=="__main__":
    #CREATING NEW OBJECTS
    number_of_objects = int(input("Number of objects: "))
 
+   img_path = os.path.join("packages", package_name, map_file)
+   img_path_preview = map_file[:-4] + "_preview.png"
+   #img_path_preview2 = map_file[:-4] + "_preview2.png"
+   img_path_fullpreview = map_file[:-4] + "_fullpreview.png"
+   
+   overwrite_image_PIL(img_path, img_path_preview)
+   #overwrite_image_PIL(img_path, img_path_preview2)
+   overwrite_image_PIL(img_path, img_path_fullpreview)
+
    for i in range(number_of_objects):
       print("NEW SEEDED CONTAINER: ")
 
@@ -142,7 +161,7 @@ if __name__=="__main__":
          z = 0
       else:
          while True:
-            z = input("Object seed: ")
+            z = input("Object z: ")
             try:
                z = int(z)
                break
@@ -154,35 +173,29 @@ if __name__=="__main__":
          lock = 0
       else:
          while True:
-            lock = input("Object seed: ")
+            lock = input("Object lock: ")
             try:
                lock = int(z)
                break
             except ValueError:
                print("Must be a valid number")
 
-      img_path = os.path.join("packages", package_name, map_file)
-      img_path2 = map_file[:-4] + "_preview.png"
-      
-      reset_preview(img_path, img_path2)
-
       global global_wasclicked
       global_wasclicked = True
 
       while global_wasclicked:
-         cv_img = cv2.imread(img_path2, 1)
+         #overwrite_image_PIL(img_path_fullpreview, img_path_preview)
+
+         cv_img = cv2.imread(img_path_preview, 1)
          open_cv_window()
 
          if not global_wasclicked:
             break
 
-         id = ID_(index=index, x=global_x, y=global_y, z=z, lock=lock, islocker=global_leftclick)
-         background = Image.open(img_path)
+         draw_container_on_image(findex=index, fx=global_x, fy=global_y, fz=z, flock=lock, fislocker=global_leftclick, fbackground_img_path=img_path_fullpreview, fsave=img_path_preview)
       
-         id.draw_container(background=background, locker_png=locker_png, box_png=box_png)
+      draw_container_on_image(findex=index, fx=global_x, fy=global_y, fz=z, flock=lock, fislocker=global_leftclick, fbackground_img_path=img_path_fullpreview, fsave=img_path_fullpreview)
 
-         background.save(map_file[:-4] + "_preview.png")
-      
       json_id = {
          "index": index,
          "seed": seed,

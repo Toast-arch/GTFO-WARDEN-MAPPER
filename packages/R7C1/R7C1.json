@@ -243,6 +243,254 @@
                     "islocker": true
                 }
             ]
+        },
+        {
+            "name": "ZONE 17",
+            "index": 1,
+            "type": "GLP",
+            "map file": "ZONE_17.png",
+            "data": [
+                {
+                    "index": 1,
+                    "seed": 156750288,
+                    "area": "A",
+                    "x": 15,
+                    "y": 494,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 2,
+                    "seed": 709326080,
+                    "area": "A",
+                    "x": 131,
+                    "y": 263,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 3,
+                    "seed": 1662201472,
+                    "area": "A",
+                    "x": 132,
+                    "y": 71,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 4,
+                    "seed": 1948072960,
+                    "area": "B",
+                    "x": 447,
+                    "y": 875,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 5,
+                    "seed": 1417715328,
+                    "area": "A",
+                    "x": 404,
+                    "y": 477,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 6,
+                    "seed": 1067199616,
+                    "area": "C",
+                    "x": 1295,
+                    "y": 85,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 7,
+                    "seed": 305594048,
+                    "area": "C",
+                    "x": 1100,
+                    "y": 314,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 8,
+                    "seed": 96718656,
+                    "area": "B",
+                    "x": 944,
+                    "y": 1259,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 9,
+                    "seed": 711877632,
+                    "area": "C",
+                    "x": 1310,
+                    "y": 771,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 10,
+                    "seed": 890063040,
+                    "area": "C",
+                    "x": 342,
+                    "y": 4,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 11,
+                    "seed": 210771392,
+                    "area": "C",
+                    "x": 750,
+                    "y": 244,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 12,
+                    "seed": 1075328640,
+                    "area": "C",
+                    "x": 952,
+                    "y": 183,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 13,
+                    "seed": 334693728,
+                    "area": "C",
+                    "x": 846,
+                    "y": 398,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 14,
+                    "seed": 1904938624,
+                    "area": "B",
+                    "x": 1135,
+                    "y": 1000,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 15,
+                    "seed": 760668928,
+                    "area": "B",
+                    "x": 710,
+                    "y": 1192,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 16,
+                    "seed": 1643730048,
+                    "area": "A",
+                    "x": 125,
+                    "y": 1213,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 17,
+                    "seed": 2066289280,
+                    "area": "B",
+                    "x": 1313,
+                    "y": 927,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 18,
+                    "seed": 296852256,
+                    "area": "B",
+                    "x": 869,
+                    "y": 894,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 19,
+                    "seed": 845594624,
+                    "area": "A",
+                    "x": 350,
+                    "y": 587,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 20,
+                    "seed": 2057943040,
+                    "area": "C",
+                    "x": 982,
+                    "y": 473,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 21,
+                    "seed": 630521856,
+                    "area": "B",
+                    "x": 663,
+                    "y": 897,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 22,
+                    "seed": 924955904,
+                    "area": "B",
+                    "x": 533,
+                    "y": 1274,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 23,
+                    "seed": 48561420,
+                    "area": "B",
+                    "x": 792,
+                    "y": 1275,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 24,
+                    "seed": 1945742208,
+                    "area": "C",
+                    "x": 1310,
+                    "y": 690,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
         }
     ],
     "seed learning data": []
