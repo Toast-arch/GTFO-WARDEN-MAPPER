@@ -75,8 +75,11 @@ SessionSeed = None
 look_for_pickup = nofile or json_data['look for pickup']
 look_for_key = nofile or json_data['look for key']
 look_for_ids = nofile or json_data['look for IDs']
-validate_run = json_data['validate run']
-validate_run_value = json_data['validate run requirement']
+validate_run = False
+validate_run_value = 0
+if not nofile:
+    validate_run = json_data['validate run']
+    validate_run_value = json_data['validate run requirement']
 
 if not nofile:
     for zone in json_data['zones']:
