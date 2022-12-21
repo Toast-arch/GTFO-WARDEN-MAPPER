@@ -7,28 +7,69 @@ from assets.dataclasses import ID_, ZONE_, ARG_
 
 def click_event(event, x, y, flags, params):
  
-   # checking for left mouse clicks
-   if event == cv2.EVENT_LBUTTONDOWN:
-      # displaying the coordinates
-      # on the Shell
-      print(x, ' ', y)
+   if event == cv2.EVENT_LBUTTONDOWN or event == cv2.EVENT_RBUTTONDOWN:
+      print("Object x: ", x)
+      print("Object y: ", y)
+      print("- - - - - - - - -")
       global global_x
       global_x = x
       global global_y
       global_y = y
-      cv2.imshow('window42', cv_img)
+
+      global global_wasclicked
+      global_wasclicked = True
+
+      global global_leftclick
+      global_leftclick = event == cv2.EVENT_LBUTTONDOWN
+
       cv2.destroyAllWindows()
-      #cv2.destroyWindow('window42')
 
 def open_cv_window():
+   global global_wasclicked
+   global_wasclicked = False
    cv2.imshow('window42', cv_img)
    cv2.setMouseCallback('window42', click_event)
    cv2.waitKey(0)
    cv2.destroyAllWindows()
 
-if __name__=="__main__":
+def reset_preview(open_path, save_path):
+   background = Image.open(open_path)
+   background.save(save_path)
 
-   package_name = sys.argv[1]
+if __name__=="__main__":
+   #ARGUMENT READING
+   arg_list = []
+   i = 0
+
+   while i < len(sys.argv):
+      if sys.argv[i][0] == '-':
+         new_key = sys.argv[i]
+         new_sub_list = []
+         i += 1
+         while i < len(sys.argv) and sys.argv[i][0] != '-':
+               new_sub_list.append(sys.argv[i])
+               i += 1
+         arg_list.append(ARG_(key=new_key, sub_list=new_sub_list))
+      else:
+         arg_list.append(ARG_(key=sys.argv[i]))
+         i += 1
+
+   package_name = arg_list[1].key_
+
+   defaultz = False
+   defaultlock = False
+   autoindex = False
+   auto_index_value = 0
+
+   #ARGUMENT APPLY
+   for arg in arg_list:
+      if arg.key_ == '--defaultz':
+         defaultz = True
+      if arg.key_ == '--defaultlock':
+         defaultlock = True
+      if arg.key_ == '--autoindex':
+         autoindex = True
+         auto_index_value = int(arg.sub_list_[0])
 
    global global_x
    global_x = -1
@@ -43,10 +84,19 @@ if __name__=="__main__":
    locker_png = Image.open("assets/locker.png")
    box_png = Image.open("assets/box.png")
 
+   #CREATING NEW ZONE
    name = input("New zone name: ")
    index = int(input("New zone index: "))
    type = input("New zone type: ")
-   map_file = input("New zone map file: ")
+      
+   while True:
+      map_file = input("New zone map file: ")
+      try_path = os.path.join("packages", package_name, map_file)
+
+      if os.path.exists(try_path):
+         break
+      else:
+         print(try_path + " does not exist.")
 
    json_zone = {
       "name": name,
@@ -56,45 +106,83 @@ if __name__=="__main__":
       "data": []
    }
 
+   #CREATING NEW OBJECTS
    number_of_objects = int(input("Number of objects: "))
 
    for i in range(number_of_objects):
       print("NEW SEEDED CONTAINER: ")
 
-      index = int(input("Object index: "))
-      seed = int(input("Object seed: "))
+      #INPUT INDEX
+      if autoindex:
+         print("Object index: " + str(auto_index_value))
+         index = auto_index_value
+         auto_index_value += 1
+      else:
+         while True:
+            index = input("Object index: ")
+            try:
+               index = int(index)
+               break
+            except ValueError:
+               print("Must be a valid number")
+
+      #INPUT SEED
+      while True:
+         seed = input("Object seed: ")
+         try:
+            seed = int(seed)
+            break
+         except ValueError:
+            print("Must be a valid number")
+      
       area = input("Object area: ")
+
+      #INPUT Z
+      if defaultz:
+         z = 0
+      else:
+         while True:
+            z = input("Object seed: ")
+            try:
+               z = int(z)
+               break
+            except ValueError:
+               print("Must be a valid number")
+      
+      #INPUT LOCK
+      if defaultlock:
+         lock = 0
+      else:
+         while True:
+            lock = input("Object seed: ")
+            try:
+               lock = int(z)
+               break
+            except ValueError:
+               print("Must be a valid number")
 
       img_path = os.path.join("packages", package_name, map_file)
       img_path2 = map_file[:-4] + "_preview.png"
-
-      #print("GLOBAL X AND y {} {}".format(global_x, global_y))
-
-      """ cv_img = cv2.imread(img_path, 1)
-
-      cv2.imshow('window42', cv_img)
-      cv2.setMouseCallback('window42', click_event)
-      cv2.waitKey(0)
-      cv2.destroyAllWindows() """
       
-      cv_img = cv2.imread(img_path, 1)
+      reset_preview(img_path, img_path2)
 
-      open_cv_window()
+      global global_wasclicked
+      global_wasclicked = True
 
-      #print("GLOBAL X AND y {} {}".format(global_x, global_y))
-   
-      id = ID_(x=global_x, y=global_y)
-      background = Image.open(img_path)
-   
-      id.draw_container(background=background, locker_png=locker_png, box_png=box_png)
+      while global_wasclicked:
+         cv_img = cv2.imread(img_path2, 1)
+         open_cv_window()
 
-      background.save(map_file[:-4] + "_preview.png")
+         if not global_wasclicked:
+            break
 
-      z = int(input("Object z: "))
-      lock = int(input("Object lock: "))
-      tmp = input("Object islocker: ")
-      islocker = tmp == "true" or tmp == "True" or tmp == "1"
+         id = ID_(index=index, x=global_x, y=global_y, z=z, lock=lock, islocker=global_leftclick)
+         background = Image.open(img_path)
+      
+         id.draw_container(background=background, locker_png=locker_png, box_png=box_png)
 
+         background.save(map_file[:-4] + "_preview.png")
+      
       json_id = {
          "index": index,
          "seed": seed,
@@ -103,15 +191,14 @@ if __name__=="__main__":
          "y": global_y,
          "z": z,
          "lock": lock,
-         "islocker": islocker
+         "islocker": global_leftclick
       }
+      
+      print("Last coordinates saved!")
 
       json_zone['data'].append(json_id)
-      json_data['zones'].append(json_zone)
 
-      cv_img = cv2.imread(img_path2, 1)
-      open_cv_window()
-
+   json_data['zones'].append(json_zone)
 
    json_file.seek(0)
    json.dump(json_data, json_file, indent=4)

@@ -3,6 +3,8 @@
     "look for key": true,
     "look for IDs": false,
     "look for pickup": true,
+    "validate run": false,
+    "validate run requirement": 0,
     "zones": [
         {
             "name": "ZONE 103",

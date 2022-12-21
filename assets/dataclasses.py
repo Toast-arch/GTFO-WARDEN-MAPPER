@@ -58,6 +58,6 @@ class ZONE_:
         self.image_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")
 
 class ARG_:
-    def __init__(self, key, arg_list=[]):
+    def __init__(self, key, sub_list=[]):
         self.key_ = key
-        self.arg_list_ = arg_list
+        self.sub_list_ = sub_list

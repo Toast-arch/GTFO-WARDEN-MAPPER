@@ -3,6 +3,8 @@
     "look for key": false,
     "look for IDs": false,
     "look for pickup": false,
+    "validate run": false,
+    "validate run requirement": 0,
     "zones": [],
     "seed learning data": []
 }

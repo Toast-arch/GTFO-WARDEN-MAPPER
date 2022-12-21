@@ -11,12 +11,6 @@ from assets.dataclasses import ID_, ZONE_, ARG_
 #PATH TO YOUR GTFO APPDATA FORLDER
 directory = "C:/Users/" + os.environ.get("USERNAME") + "/AppData/LocalLow/10 Chambers Collective/GTFO/"
 
-""" #ARGUMENT READING
-class ARG_:
-    def __init__(self, key, arg_list=[]):
-        self.key_ = key
-        self.arg_list_ = arg_list """
-
 if len(sys.argv) == 1:
     print("Please indicate package (level) name.")
     exit()
@@ -27,12 +21,12 @@ i = 0
 while i < len(sys.argv):
     if sys.argv[i][0] == '-':
         new_key = sys.argv[i]
-        new_arg_list = []
+        new_sub_list = []
         i += 1
         while i < len(sys.argv) and sys.argv[i][0] != '-':
-            new_arg_list.append(sys.argv[i])
+            new_sub_list.append(sys.argv[i])
             i += 1
-        arg_list.append(ARG_(key=new_key, arg_list=new_arg_list))
+        arg_list.append(ARG_(key=new_key, sub_list=new_sub_list))
     else:
         arg_list.append(ARG_(key=sys.argv[i]))
         i += 1
@@ -67,60 +61,7 @@ if not nofile:
 locker_png = Image.open("assets/locker.png")
 box_png = Image.open("assets/box.png")
 
-""" ##CLASSES
-class ID_:
-    def __init__(self, index, seed, area, x, y, z, lock, islocker):
-        self.index_ = index
-        self.seed_ = seed
-        self.area_ = area
-        self.x_ = x
-        self.y_ = y
-        self.z_ = z
-        self.lock_ = lock
-        self.islocker_ = islocker
-
-    def print_data(self):
-        print("Box Index: {} -> {}".format(self.index_, self.area_))
-
-    def draw_container(self, background):
-        offset_x = 15
-        offset_y = 60
-        if self.index_ < 10:
-            offset_x = -8
-        if self.islocker_:
-            background.paste(locker_png, (self.x_, self.y_), locker_png)
-        else:
-            background.paste(box_png, (self.x_, self.y_), box_png)
-            offset_y = 20
-        draw = ImageDraw.Draw(background)
-        font = ImageFont.truetype("assets/OpenSans-Bold.ttf", 55)
-        r, g, b = 0, 255, 0
-        if self.lock_ == 1:
-            r, g, b = 250, 218, 94
-        elif self.lock_ == 2:
-            r, g, b = 255, 0, 0
-
-        draw.text((self.x_ - offset_x, self.y_ + offset_y),str(self.index_),(r,g,b),font=font)
-        if self.z_ > 0:
-            draw.text((self.x_ + 10, self.y_ - 20),'^',(0,0,0),font=font)
-        elif self.z_ < 0:
-            draw.text((self.x_ + 10, self.y_ - 20),'v',(0,0,0),font=font)
-    
-    def tojson(self):
-        return json.dumps(self.__dict__, indent=4)
-
-class ZONE_:
-    def __init__(self, name, index, type, idlist, image_file):
-        self.name_ = name
-        self.index_ = index
-        self.type_ = type
-        self.idlist_ = idlist
-        self.image_file_ = image_file
-        self.image_ = Image.open("packages/" + package_name + '/' + image_file)
-    
-    def save_image(self):
-        self.image_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png") """
-
+#LOADING JSON DATA
 zone_list = []
 listOfLines = []
 seedList = []
@@ -134,8 +75,9 @@ SessionSeed = None
 look_for_pickup = nofile or json_data['look for pickup']
 look_for_key = nofile or json_data['look for key']
 look_for_ids = nofile or json_data['look for IDs']
+validate_run = json_data['validate run']
+validate_run_value = json_data['validate run requirement']
 
-#LOADING JSON DATA
 if not nofile:
     for zone in json_data['zones']:
         idlist = []
@@ -242,19 +184,19 @@ if not nofile:
         valid_id_count = 0
 
         for zone in zone_list:
-            if zone.type_ == "ID":
-                print("IDS FOUND " + zone.name_ + ':')
-                for id_log in seedList:
-                    for id_check in zone.idlist_:
-                        if id_log == str(id_check.seed_):
-                            valid_id_count += 1
-                            id_check.print_data()
-                            id_check.draw_container(zone.image_, locker_png, box_png)
+            print(zone.type_ + " FOUND IN " + zone.name_ + ':')
+            for id_log in seedList:
+                for id_check in zone.idlist_:
+                    if id_log == str(id_check.seed_):
+                        valid_id_count += 1
+                        id_check.print_data()
+                        id_check.draw_container(zone.image_, locker_png, box_png)
 
-        if valid_id_count >= 7:
-            print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
-        else:
-            print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
+        if validate_run:
+            if valid_id_count >= validate_run_value:
+                print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
+            else:
+                print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
 
 #SAVE ALL IMAGES
 if not nomap:
