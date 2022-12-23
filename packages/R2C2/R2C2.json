@@ -11,6 +11,7 @@
             "index": 0,
             "type": "ID",
             "map file": "ZONE_114.png",
+            "size preset": 1,
             "data":[
                 {
                     "index": 0,
@@ -349,6 +350,7 @@
             "index": 1,
             "type": "KEY",
             "map file": "ZONE_115.png",
+            "size preset": 0,
             "data":[
                 {
                     "index": 0,
@@ -588,6 +590,7 @@
             "index": 2,
             "type": "ID",
             "map file": "ZONE_118.png",
+            "size preset": 1,
             "data":[
                 {
                     "index": 0,
@@ -926,6 +929,7 @@
             "index": 3,
             "type": "ID",
             "map file": "ZONE_119.png",
+            "size preset": 1,
             "data":[
                 {
                     "index": 0,

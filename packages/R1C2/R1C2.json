@@ -1,7 +1,7 @@
 {
     "name":"R1C2",
-    "look for key": false,
-    "look for IDs": false,
+    "look for key": true,
+    "look for IDs": true,
     "look for pickup": false,
     "validate run": false,
     "validate run requirement": 0,

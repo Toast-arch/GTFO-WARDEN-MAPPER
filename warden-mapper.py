@@ -65,10 +65,6 @@ if not nofile:
         print("No file found for " + package_name)
         exit()
 
-## LOADING PIL IMAGE ASSETS
-locker_png = Image.open("assets/locker.png")
-box_png = Image.open("assets/box.png")
-
 #LOADING JSON DATA
 zone_list = []
 listOfLines = []
@@ -94,10 +90,10 @@ if not nofile:
         idlist = []
         #Loading all IDs
         for id in zone['data']:
-            idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker']))
+            idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker'], zone_size_preset=zone['size preset']))
         
         #Creating ID List for a zone
-        zone_list.append(ZONE_(name=zone['name'], index= zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file'], package_name=package_name))
+        zone_list.append(ZONE_(name=zone['name'], index=zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file'], package_name=package_name))
 
 #FINDING LATEST NETSTATUS IN GTFO DIRECTORY
 for i in os.listdir(directory):
@@ -186,8 +182,9 @@ if look_for_key:
         if zone.type_ == "KEY":
             for i in range(len(keyriList)):
                 print(keynameList[i] + " found in " + zone.name_ + ':')
+
                 zone.idlist_[int(keyriList[i])].print_data()
-                zone.idlist_[int(keyriList[i])].draw_container(zone.image_, locker_png, box_png)
+                zone.idlist_[int(keyriList[i])].draw_container(zone.image_save_)
 
 #CHECKING AND GENERATING ID MAPS
 if not nofile:
@@ -201,7 +198,8 @@ if not nofile:
                     if id_log == str(id_check.seed_):
                         valid_id_count += 1
                         id_check.print_data()
-                        id_check.draw_container(zone.image_, locker_png, box_png)
+                        
+                        zone.idlist_[id_check.index_].draw_container(zone.image_save_)
 
         if validate_run:
             if valid_id_count >= validate_run_value:

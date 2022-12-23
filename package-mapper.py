@@ -6,7 +6,6 @@ import cv2
 from assets.dataclasses import ID_, ZONE_, ARG_
 
 def click_event(event, x, y, flags, params):
- 
    if event == cv2.EVENT_LBUTTONDOWN or event == cv2.EVENT_RBUTTONDOWN:
       print("Object x: ", x)
       print("Object y: ", y)
@@ -36,13 +35,13 @@ def overwrite_image_PIL(open_path, save_path):
    background = Image.open(open_path)
    background.save(save_path)
 
-def draw_container_on_image(findex, fx, fy, fz, flock, fislocker, fbackground_img_path, fsave):
+def draw_container_on_image(findex, fx, fy, fz, flock, fislocker, fbackground_img_path, fsave, size_preset):
    
-   id = ID_(index=findex, x=fx, y=fy, z=fz, lock=flock, islocker=fislocker)
+   id = ID_(index=findex, x=fx, y=fy, z=fz, lock=flock, islocker=fislocker, zone_size_preset=size_preset)
 
    background = Image.open(fbackground_img_path)
 
-   id.draw_container(background=background, locker_png=locker_png, box_png=box_png)
+   id.draw_container(background=background)
 
    background.save(fsave)
 
@@ -69,17 +68,49 @@ if __name__=="__main__":
    defaultz = False
    defaultlock = False
    autoindex = False
-   auto_index_value = 0
+   auto_index_start_value = 0
+   autoseed = False
+   autoseed_list = []
+   auto_area = False
+   auto_area_seed_offset = 0
+   auto_area_value = "A"
 
    #ARGUMENT APPLY
    for arg in arg_list:
       if arg.key_ == '--defaultz':
          defaultz = True
+
       if arg.key_ == '--defaultlock':
          defaultlock = True
+
       if arg.key_ == '--autoindex':
          autoindex = True
-         auto_index_value = int(arg.sub_list_[0])
+         if len(arg.sub_list_) == 0:
+            print("--autoindex requires a starting index (int).")
+            exit()
+         auto_index_start_value = int(arg.sub_list_[0])
+      
+      if arg.key_ == '--autoseed':
+         autoseed = True
+         
+         if len(arg.sub_list_) == 0:
+            print("--autoseed requires a txt  file.")
+            exit()
+         if not os.path.exists(arg.sub_list_[0]):
+            print("--autoseed " + arg.sub_list_[0] + " does not exist.")
+            exit()
+   
+         with open(arg.sub_list_[0]) as f:
+            for line in f.readlines():
+               if line == '\n':
+                  autoseed_list.append(-1)
+               else:
+                  autoseed_list.append(int(line))
+
+      if arg.key_ == '--autoarea':
+         auto_area = True
+
+   auto_area = auto_area and autoseed
 
    global global_x
    global_x = -1
@@ -90,17 +121,23 @@ if __name__=="__main__":
 
    json_data = json.load(json_file)
 
-   ## LOADING PIL IMAGE ASSETS
-   locker_png = Image.open("assets/locker.png")
-   box_png = Image.open("assets/box.png")
-
    #CREATING NEW ZONE
    name = input("New zone name: ")
    index = int(input("New zone index: "))
    type = input("New zone type: ")
-      
-   while True:
+   
+   path_auto_find = False
+   try_map_file_auto = name[0:4] + '_' + name[5:] + '.png'
+   try_path_auto = os.path.join("packages", package_name, try_map_file_auto)
+
+   if os.path.exists(try_path_auto):
+      map_file = try_map_file_auto
+      path_auto_find = True
+      print("New zone map file: " + try_map_file_auto)
+
+   while not path_auto_find:
       map_file = input("New zone map file: ")
+
       try_path = os.path.join("packages", package_name, map_file)
 
       if os.path.exists(try_path):
@@ -108,11 +145,14 @@ if __name__=="__main__":
       else:
          print(try_path + " does not exist.")
 
+   size_preset = int(input("New zone size preset: "))
+
    json_zone = {
       "name": name,
       "index": index,
       "type": type,
       "map file": map_file,
+      "size preset": size_preset,
       "data": []
    }
 
@@ -133,9 +173,8 @@ if __name__=="__main__":
 
       #INPUT INDEX
       if autoindex:
-         print("Object index: " + str(auto_index_value))
-         index = auto_index_value
-         auto_index_value += 1
+         print("Object index: " + str(i + auto_index_start_value))
+         index = i + auto_index_start_value
       else:
          while True:
             index = input("Object index: ")
@@ -146,15 +185,27 @@ if __name__=="__main__":
                print("Must be a valid number")
 
       #INPUT SEED
-      while True:
-         seed = input("Object seed: ")
-         try:
-            seed = int(seed)
-            break
-         except ValueError:
-            print("Must be a valid number")
+      if autoseed:
+         print("TESTING " + str(autoseed_list[i + auto_area_seed_offset]) )
+         if autoseed_list[i + auto_area_seed_offset] == -1:
+            auto_area_seed_offset += 1
+            auto_area_value = chr(ord(auto_area_value) + 1)
+         print("Object index: " + str(autoseed_list[i + auto_area_seed_offset]))
+         seed = autoseed_list[i + auto_area_seed_offset]
+      else:
+         while True:
+            seed = input("Object seed: ")
+            try:
+               seed = int(seed)
+               break
+            except ValueError:
+               print("Must be a valid number")
       
-      area = input("Object area: ")
+      if auto_area:
+         area = auto_area_value
+         print("Object area: " + area)
+      else:
+         area = input("Object area: ")
 
       #INPUT Z
       if defaultz:
@@ -192,9 +243,9 @@ if __name__=="__main__":
          if not global_wasclicked:
             break
 
-         draw_container_on_image(findex=index, fx=global_x, fy=global_y, fz=z, flock=lock, fislocker=global_leftclick, fbackground_img_path=img_path_fullpreview, fsave=img_path_preview)
+         draw_container_on_image(findex=index, fx=global_x, fy=global_y, fz=z, flock=lock, fislocker=global_leftclick, fbackground_img_path=img_path_fullpreview, fsave=img_path_preview, size_preset=size_preset)
       
-      draw_container_on_image(findex=index, fx=global_x, fy=global_y, fz=z, flock=lock, fislocker=global_leftclick, fbackground_img_path=img_path_fullpreview, fsave=img_path_fullpreview)
+      draw_container_on_image(findex=index, fx=global_x, fy=global_y, fz=z, flock=lock, fislocker=global_leftclick, fbackground_img_path=img_path_fullpreview, fsave=img_path_fullpreview, size_preset=size_preset)
 
       json_id = {
          "index": index,

@@ -11,6 +11,7 @@
             "index": 0,
             "type": "GLP",
             "map file": "ZONE_14.png",
+            "size preset": 1,
             "data": [
                 {
                     "index": 1,
@@ -249,6 +250,7 @@
             "index": 1,
             "type": "GLP",
             "map file": "ZONE_17.png",
+            "size preset": 1,
             "data": [
                 {
                     "index": 1,
@@ -497,6 +499,7 @@
             "index": 2,
             "type": "GLP",
             "map file": "ZONE_18.png",
+            "size preset": 1,
             "data": [
                 {
                     "index": 1,
