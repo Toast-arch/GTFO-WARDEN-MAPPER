@@ -3,7 +3,7 @@ from PIL import Image
 import json
 import sys
 import cv2
-from assets.dataclasses import ID_, ZONE_, ARG_
+from assets.dataclasses import ID_, ARG_
 
 def click_event(event, x, y, flags, params):
    if event == cv2.EVENT_LBUTTONDOWN or event == cv2.EVENT_RBUTTONDOWN:
