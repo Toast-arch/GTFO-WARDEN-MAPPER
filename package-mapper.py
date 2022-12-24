@@ -186,7 +186,6 @@ if __name__=="__main__":
 
       #INPUT SEED
       if autoseed:
-         print("TESTING " + str(autoseed_list[i + auto_area_seed_offset]) )
          if autoseed_list[i + auto_area_seed_offset] == -1:
             auto_area_seed_offset += 1
             auto_area_value = chr(ord(auto_area_value) + 1)
