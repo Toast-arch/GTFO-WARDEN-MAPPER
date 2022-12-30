@@ -192,14 +192,14 @@ if not nofile:
         valid_id_count = 0
 
         for zone in zone_list:
-            print(zone.type_ + " FOUND IN " + zone.name_ + ':')
-            for id_log in seedList:
-                for id_check in zone.idlist_:
-                    if id_log == str(id_check.seed_):
-                        valid_id_count += 1
-                        id_check.print_data()
-                        
-                        zone.idlist_[id_check.index_ - zone.id_start_index_].draw_container(zone.image_save_)
+            if zone.type_ != "KEY":
+                print(zone.type_ + " FOUND IN " + zone.name_ + ':')
+                for id_log in seedList:
+                    for id_check in zone.idlist_:
+                        if id_log == str(id_check.seed_):
+                            valid_id_count += 1
+                            id_check.print_data()
+                            zone.idlist_[id_check.index_ - zone.id_start_index_].draw_container(zone.image_save_)
 
         if validate_run:
             if valid_id_count >= validate_run_value:

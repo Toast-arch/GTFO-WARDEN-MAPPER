@@ -50,7 +50,6 @@ class ID_:
         elif self.lock_ == 2:
             r, g, b = 255, 0, 0
 
-        print("DRAWING INDEX : " + str(self.index_))
         draw.text((self.x_ + offset_x, self.y_ + offset_y), str(self.index_), (r,g,b),font=font)
 
         if self.z_ > 0:
