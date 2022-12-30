@@ -11,9 +11,38 @@ from assets.dataclasses import ID_, ZONE_, ARG_
 #PATH TO YOUR GTFO APPDATA FORLDER
 directory = "C:/Users/" + os.environ.get("USERNAME") + "/AppData/LocalLow/10 Chambers Collective/GTFO/"
 
-if len(sys.argv) == 1:
-    print("Please indicate package (level) name.")
-    exit()
+netstatus_files = []
+
+#FINDING LATEST NETSTATUS IN GTFO DIRECTORY
+for i in os.listdir(directory):
+    if os.path.isfile(os.path.join(directory,i)) and 'NICKNAME_NETSTATUS' in i:
+        netstatus_files.append(i)
+
+level_name = ""
+
+#FINDING LEVEL
+for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1], 'r', encoding='utf-8').readlines()):
+    if "SelectActiveExpedition :" in line:
+        line = line[30:]
+        words = line.split()
+
+        rundown_local_index = int(words[4][6:])
+
+        if rundown_local_index == 31:
+            level_name += "R7"
+        elif rundown_local_index == 32:
+            level_name += "R1"
+        elif rundown_local_index == 33:
+            level_name += "R2"
+        elif rundown_local_index == 34:
+            level_name += "R3"
+
+        level_tier = words[5][4]
+        level_name += level_tier
+
+        level_number = int(words[6]) + 1
+        level_name += str(level_number)
+        break
 
 arg_list = []
 i = 0
@@ -31,8 +60,8 @@ while i < len(sys.argv):
         arg_list.append(ARG_(key=sys.argv[i]))
         i += 1
 
-package_name = arg_list[1].key_
-nofile = False
+package_name = level_name
+nofile = not os.path.exists("packages/" + package_name + '/' + package_name + ".json")
 nomap = False
 learning = False
 learning_input = False
@@ -42,13 +71,10 @@ for arg in arg_list:
     if arg.key_ == '--help':
         print("usage: warden-mapper.py <package name> [--help] [--nofile] [--nomap] [-l | -L]")
         print()
-        print("   nofile\tRemoves the requirement for a package file. Warden mapper will output anything it finds in the terminal.")
         print("   nomap\tDo not create map images.")
         print("   l\t\tLook for seed in seed learning data.")
         print("   L\t\tAdvanced seed learning option. Will prompt for data to be mapped to sessionseed.")
         exit()
-    if arg.key_ == '--nofile':
-        nofile = True
     if arg.key_ == '--nomap' or nofile:
         nomap = True
     if arg.key_ == '-L':
@@ -73,7 +99,6 @@ keyriList = []
 keynameList = []
 keyZoneList = []
 cargozoneList = []
-netstatus_files = []
 SessionSeed = None
 
 look_for_pickup = nofile or json_data['look for pickup']
@@ -81,6 +106,7 @@ look_for_key = nofile or json_data['look for key']
 look_for_ids = nofile or json_data['look for IDs']
 validate_run = False
 validate_run_value = 0
+
 if not nofile:
     validate_run = json_data['validate run']
     validate_run_value = json_data['validate run requirement']
@@ -94,11 +120,6 @@ if not nofile:
         
         #Creating ID List for a zone
         zone_list.append(ZONE_(name=zone['name'], index=zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file'], package_name=package_name))
-
-#FINDING LATEST NETSTATUS IN GTFO DIRECTORY
-for i in os.listdir(directory):
-    if os.path.isfile(os.path.join(directory,i)) and 'NICKNAME_NETSTATUS' in i:
-        netstatus_files.append(i)
 
 #FINDING LAST RUN LOG
 for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1], 'r', encoding='utf-8').readlines()):

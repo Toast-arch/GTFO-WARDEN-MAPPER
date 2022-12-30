@@ -12,13 +12,9 @@ Seed learning is WIP and experimental.
 REQUIREMENTS:
  - python3+
  - python PIL : install with "pip install pillow"
+ - python opnecv (optional) : install with "pip install opencv-python"
 
 HOW TO USE :
-- Run the script with level name as first argument a couple seconds after the level has started (try again a couple seconds later still if no result or less than 6 valid IDs).
+- Run the script a couple seconds after the level has started (try again a couple seconds later still if no result or less than minimal number of valid IDs).
 - Go to the _GENERATED images for results if level specific package is available.
-- If the game level you want to map has an incomplete or missing file, run the script with --nofile option.
-- Run the script with --help option for more info.
-
-EXAMPLE :
-- Playing R2C2 -> "py warden-mapper.py R2C2"
-- Playing any level with no file -> "py warden-mapper.py --nofile"
+- Run the script with --help option for more info on optional arguments.
