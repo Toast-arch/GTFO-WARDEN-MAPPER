@@ -50,7 +50,8 @@ class ID_:
         elif self.lock_ == 2:
             r, g, b = 255, 0, 0
 
-        draw.text((self.x_ + offset_x, self.y_ + offset_y),str(self.index_),(r,g,b),font=font)
+        print("DRAWING INDEX : " + str(self.index_))
+        draw.text((self.x_ + offset_x, self.y_ + offset_y), str(self.index_), (r,g,b),font=font)
 
         if self.z_ > 0:
             draw.text((self.x_ + 10, self.y_ - 20),'^',(0,0,0),font=font)
@@ -66,9 +67,10 @@ class ZONE_:
         self.index_ = index
         self.type_ = type
         self.idlist_ = idlist
+        self.id_start_index_ = idlist[0].index_
         self.image_file_ = image_file
         self.image_save_ = Image.open("packages/" + package_name + '/' + image_file)
-    
+
     def save_image(self):
         self.image_save_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")
 

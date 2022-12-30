@@ -182,9 +182,9 @@ if look_for_key:
         if zone.type_ == "KEY":
             for i in range(len(keyriList)):
                 print(keynameList[i] + " found in " + zone.name_ + ':')
-
-                zone.idlist_[int(keyriList[i])].print_data()
-                zone.idlist_[int(keyriList[i])].draw_container(zone.image_save_)
+    
+                zone.idlist_[int(keyriList[i]) - zone.id_start_index_].print_data()
+                zone.idlist_[int(keyriList[i]) - zone.id_start_index_].draw_container(zone.image_save_)
 
 #CHECKING AND GENERATING ID MAPS
 if not nofile:
@@ -199,7 +199,7 @@ if not nofile:
                         valid_id_count += 1
                         id_check.print_data()
                         
-                        zone.idlist_[id_check.index_].draw_container(zone.image_save_)
+                        zone.idlist_[id_check.index_ - zone.id_start_index_].draw_container(zone.image_save_)
 
         if validate_run:
             if valid_id_count >= validate_run_value:
