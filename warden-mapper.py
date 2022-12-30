@@ -62,6 +62,8 @@ while i < len(sys.argv):
 
 package_name = level_name
 nofile = not os.path.exists("packages/" + package_name + '/' + package_name + ".json")
+if nofile:
+    print("No package found for " + level_name + ". Running with default settings.")
 nomap = False
 learning = False
 learning_input = False
@@ -267,3 +269,5 @@ if SessionSeed:
     json_data['seed learning data'].append(json_object)
     json_file.seek(0)
     json.dump(json_data, json_file, indent=4)
+
+input()
