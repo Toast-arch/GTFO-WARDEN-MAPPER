@@ -121,7 +121,7 @@ if not nofile:
             idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker'], zone_size_preset=zone['size preset']))
         
         #Creating ID List for a zone
-        zone_list.append(ZONE_(name=zone['name'], index=zone['index'], type=zone['type'], idlist= idlist, image_file=zone['map file'], package_name=package_name))
+        zone_list.append(ZONE_(name=zone['name'], type=zone['type'], idlist= idlist, image_file=zone['map file'], package_name=package_name))
 
 #FINDING LAST RUN LOG
 for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1], 'r', encoding='utf-8').readlines()):

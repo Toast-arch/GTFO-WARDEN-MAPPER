@@ -61,9 +61,8 @@ class ID_:
         return json.dumps(self.__dict__, indent=4)
 
 class ZONE_:
-    def __init__(self, name, index, type, idlist, image_file, package_name):
+    def __init__(self, name, type, idlist, image_file, package_name):
         self.name_ = name
-        self.index_ = index
         self.type_ = type
         self.idlist_ = idlist
         self.id_start_index_ = idlist[0].index_

@@ -123,7 +123,6 @@ if __name__=="__main__":
 
    #CREATING NEW ZONE
    name = input("New zone name: ")
-   index = int(input("New zone index: "))
    type = input("New zone type: ")
    
    path_auto_find = False
@@ -149,7 +148,6 @@ if __name__=="__main__":
 
    json_zone = {
       "name": name,
-      "index": index,
       "type": type,
       "map file": map_file,
       "size preset": size_preset,

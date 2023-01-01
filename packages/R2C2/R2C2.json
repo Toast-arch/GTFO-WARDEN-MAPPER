@@ -8,7 +8,6 @@
     "zones":[
         {
             "name": "ZONE 114",
-            "index": 0,
             "type": "ID",
             "map file": "ZONE_114.png",
             "size preset": 1,
@@ -347,7 +346,6 @@
         },
         {
             "name": "ZONE 115",
-            "index": 1,
             "type": "KEY",
             "map file": "ZONE_115.png",
             "size preset": 0,
@@ -587,7 +585,6 @@
         },
         {
             "name": "ZONE 118",
-            "index": 2,
             "type": "ID",
             "map file": "ZONE_118.png",
             "size preset": 1,
@@ -926,7 +923,6 @@
         },
         {
             "name": "ZONE 119",
-            "index": 3,
             "type": "ID",
             "map file": "ZONE_119.png",
             "size preset": 1,
