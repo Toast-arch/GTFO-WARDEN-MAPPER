@@ -1,0 +1,2100 @@
+{
+    "name": "R1C2",
+    "look for key": true,
+    "look for IDs": true,
+    "look for pickup": false,
+    "validate run": false,
+    "validate run requirement": 0,
+    "zones": [
+        {
+            "name": "ZONE 98",
+            "type": "PD",
+            "map file": "ZONE_98.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 0,
+                    "seed": 346996608,
+                    "area": "A",
+                    "x": 870,
+                    "y": 201,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 1,
+                    "seed": 905013760,
+                    "area": "A",
+                    "x": 848,
+                    "y": 201,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 2,
+                    "seed": 623958656,
+                    "area": "A",
+                    "x": 837,
+                    "y": 244,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 3,
+                    "seed": 2044730624,
+                    "area": "A",
+                    "x": 817,
+                    "y": 269,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 4,
+                    "seed": 578844928,
+                    "area": "A",
+                    "x": 818,
+                    "y": 296,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 5,
+                    "seed": 1998662912,
+                    "area": "A",
+                    "x": 794,
+                    "y": 327,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 6,
+                    "seed": 600235456,
+                    "area": "B",
+                    "x": 701,
+                    "y": 197,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 7,
+                    "seed": 1112212736,
+                    "area": "B",
+                    "x": 740,
+                    "y": 211,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 8,
+                    "seed": 1478434048,
+                    "area": "B",
+                    "x": 711,
+                    "y": 273,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 9,
+                    "seed": 516630112,
+                    "area": "B",
+                    "x": 739,
+                    "y": 403,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 10,
+                    "seed": 937727488,
+                    "area": "B",
+                    "x": 723,
+                    "y": 460,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 11,
+                    "seed": 2097869696,
+                    "area": "B",
+                    "x": 738,
+                    "y": 492,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 12,
+                    "seed": 1495536896,
+                    "area": "C",
+                    "x": 613,
+                    "y": 34,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 13,
+                    "seed": 1500273280,
+                    "area": "C",
+                    "x": 536,
+                    "y": 238,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 14,
+                    "seed": 1109015808,
+                    "area": "C",
+                    "x": 587,
+                    "y": 239,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 15,
+                    "seed": 2001017856,
+                    "area": "C",
+                    "x": 650,
+                    "y": 306,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 16,
+                    "seed": 2086805888,
+                    "area": "C",
+                    "x": 548,
+                    "y": 349,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 17,
+                    "seed": 1796151040,
+                    "area": "C",
+                    "x": 613,
+                    "y": 354,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 18,
+                    "seed": 917974464,
+                    "area": "C",
+                    "x": 521,
+                    "y": 392,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 19,
+                    "seed": 1304276480,
+                    "area": "C",
+                    "x": 564,
+                    "y": 427,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 20,
+                    "seed": 1717182464,
+                    "area": "C",
+                    "x": 599,
+                    "y": 427,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 21,
+                    "seed": 755714816,
+                    "area": "D",
+                    "x": 334,
+                    "y": 26,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 22,
+                    "seed": 1497236864,
+                    "area": "D",
+                    "x": 357,
+                    "y": 75,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 23,
+                    "seed": 1979162496,
+                    "area": "D",
+                    "x": 437,
+                    "y": 112,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 24,
+                    "seed": 643558080,
+                    "area": "D",
+                    "x": 347,
+                    "y": 126,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 25,
+                    "seed": 565167232,
+                    "area": "D",
+                    "x": 402,
+                    "y": 150,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 26,
+                    "seed": 1149503360,
+                    "area": "D",
+                    "x": 463,
+                    "y": 256,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 27,
+                    "seed": 1556472192,
+                    "area": "D",
+                    "x": 348,
+                    "y": 326,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 28,
+                    "seed": 2143392896,
+                    "area": "D",
+                    "x": 461,
+                    "y": 339,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 29,
+                    "seed": 1562016000,
+                    "area": "E",
+                    "x": 105,
+                    "y": 20,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 30,
+                    "seed": 377097408,
+                    "area": "D",
+                    "x": 44,
+                    "y": 61,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 31,
+                    "seed": 54940816,
+                    "area": "D",
+                    "x": 7,
+                    "y": 82,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 32,
+                    "seed": 1224353024,
+                    "area": "D",
+                    "x": 158,
+                    "y": 115,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 33,
+                    "seed": 1277371008,
+                    "area": "D",
+                    "x": 13,
+                    "y": 171,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 34,
+                    "seed": 266408720,
+                    "area": "D",
+                    "x": 126,
+                    "y": 218,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        },
+        {
+            "name": "ZONE 90",
+            "type": "PD",
+            "map file": "ZONE_90.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 0,
+                    "seed": 1266760832,
+                    "area": "A",
+                    "x": 112,
+                    "y": 780,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 1,
+                    "seed": 399253280,
+                    "area": "A",
+                    "x": 192,
+                    "y": 758,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 2,
+                    "seed": 1077499008,
+                    "area": "A",
+                    "x": 221,
+                    "y": 776,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 3,
+                    "seed": 1763674624,
+                    "area": "A",
+                    "x": 339,
+                    "y": 785,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 4,
+                    "seed": 1356161664,
+                    "area": "A",
+                    "x": 185,
+                    "y": 746,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 5,
+                    "seed": 1747628800,
+                    "area": "A",
+                    "x": 218,
+                    "y": 746,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 6,
+                    "seed": 426825088,
+                    "area": "A",
+                    "x": 136,
+                    "y": 688,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 7,
+                    "seed": 1092112640,
+                    "area": "A",
+                    "x": 340,
+                    "y": 681,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 8,
+                    "seed": 1379048576,
+                    "area": "A",
+                    "x": 6,
+                    "y": 626,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 9,
+                    "seed": 1823962240,
+                    "area": "A",
+                    "x": 5,
+                    "y": 605,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 10,
+                    "seed": 1980623104,
+                    "area": "A",
+                    "x": 151,
+                    "y": 554,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 11,
+                    "seed": 1366283904,
+                    "area": "A",
+                    "x": 152,
+                    "y": 577,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 12,
+                    "seed": 1080953856,
+                    "area": "A",
+                    "x": 188,
+                    "y": 556,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 13,
+                    "seed": 1186805760,
+                    "area": "A",
+                    "x": 189,
+                    "y": 578,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 14,
+                    "seed": 786907328,
+                    "area": "A",
+                    "x": 277,
+                    "y": 559,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 15,
+                    "seed": 1740080384,
+                    "area": "A",
+                    "x": 276,
+                    "y": 585,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 16,
+                    "seed": 26506152,
+                    "area": "A",
+                    "x": 453,
+                    "y": 593,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 17,
+                    "seed": 254974336,
+                    "area": "A",
+                    "x": 453,
+                    "y": 618,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 18,
+                    "seed": 413471168,
+                    "area": "A",
+                    "x": 453,
+                    "y": 640,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 19,
+                    "seed": 580742720,
+                    "area": "A",
+                    "x": 454,
+                    "y": 663,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 20,
+                    "seed": 893112704,
+                    "area": "A",
+                    "x": 464,
+                    "y": 666,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 21,
+                    "seed": 1307960704,
+                    "area": "A",
+                    "x": 52,
+                    "y": 499,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 22,
+                    "seed": 1387918592,
+                    "area": "A",
+                    "x": 141,
+                    "y": 478,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 23,
+                    "seed": 71873264,
+                    "area": "A",
+                    "x": 142,
+                    "y": 504,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 24,
+                    "seed": 2105888768,
+                    "area": "A",
+                    "x": 173,
+                    "y": 490,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 25,
+                    "seed": 1199609856,
+                    "area": "A",
+                    "x": 280,
+                    "y": 483,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 26,
+                    "seed": 1454848256,
+                    "area": "A",
+                    "x": 316,
+                    "y": 516,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 27,
+                    "seed": 260651072,
+                    "area": "A",
+                    "x": 317,
+                    "y": 531,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 28,
+                    "seed": 218692784,
+                    "area": "A",
+                    "x": 408,
+                    "y": 427,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 29,
+                    "seed": 1389935744,
+                    "area": "A",
+                    "x": 406,
+                    "y": 473,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 30,
+                    "seed": 937726976,
+                    "area": "A",
+                    "x": 42,
+                    "y": 350,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 31,
+                    "seed": 502631904,
+                    "area": "A",
+                    "x": 110,
+                    "y": 229,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 32,
+                    "seed": 1256054400,
+                    "area": "A",
+                    "x": 110,
+                    "y": 255,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 33,
+                    "seed": 637267008,
+                    "area": "A",
+                    "x": 23,
+                    "y": 191,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 34,
+                    "seed": 670434112,
+                    "area": "A",
+                    "x": 139,
+                    "y": 193,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 35,
+                    "seed": 1822135552,
+                    "area": "A",
+                    "x": 159,
+                    "y": 322,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 36,
+                    "seed": 440494624,
+                    "area": "A",
+                    "x": 168,
+                    "y": 26,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 37,
+                    "seed": 1039172736,
+                    "area": "A",
+                    "x": 195,
+                    "y": 26,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 38,
+                    "seed": 1631931264,
+                    "area": "A",
+                    "x": 222,
+                    "y": 26,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 39,
+                    "seed": 1383460608,
+                    "area": "A",
+                    "x": 252,
+                    "y": 27,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 40,
+                    "seed": 1399321216,
+                    "area": "A",
+                    "x": 309,
+                    "y": 29,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 41,
+                    "seed": 433089536,
+                    "area": "A",
+                    "x": 302,
+                    "y": 192,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 42,
+                    "seed": 1644052864,
+                    "area": "A",
+                    "x": 327,
+                    "y": 192,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 43,
+                    "seed": 1646990464,
+                    "area": "A",
+                    "x": 290,
+                    "y": 243,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 44,
+                    "seed": 316483200,
+                    "area": "A",
+                    "x": 357,
+                    "y": 205,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 45,
+                    "seed": 1674761600,
+                    "area": "A",
+                    "x": 357,
+                    "y": 220,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 46,
+                    "seed": 2089183104,
+                    "area": "A",
+                    "x": 402,
+                    "y": 208,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 47,
+                    "seed": 504110656,
+                    "area": "A",
+                    "x": 422,
+                    "y": 232,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 48,
+                    "seed": 416661120,
+                    "area": "A",
+                    "x": 396,
+                    "y": 240,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 49,
+                    "seed": 1674619520,
+                    "area": "A",
+                    "x": 383,
+                    "y": 256,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 50,
+                    "seed": 658606336,
+                    "area": "A",
+                    "x": 381,
+                    "y": 275,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 51,
+                    "seed": 734697792,
+                    "area": "A",
+                    "x": 381,
+                    "y": 294,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 52,
+                    "seed": 1020518080,
+                    "area": "A",
+                    "x": 382,
+                    "y": 314,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 53,
+                    "seed": 607443200,
+                    "area": "A",
+                    "x": 442,
+                    "y": 282,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 54,
+                    "seed": 883189120,
+                    "area": "A",
+                    "x": 425,
+                    "y": 311,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 55,
+                    "seed": 280788576,
+                    "area": "A",
+                    "x": 342,
+                    "y": 364,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 56,
+                    "seed": 1545048064,
+                    "area": "A",
+                    "x": 18,
+                    "y": 328,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        },
+        {
+            "name": "ZONE 94",
+            "type": "PD",
+            "map file": "ZONE_94.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 0,
+                    "seed": 1344295424,
+                    "area": "A",
+                    "x": 2,
+                    "y": 198,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 1,
+                    "seed": 1433722496,
+                    "area": "A",
+                    "x": 116,
+                    "y": 413,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 2,
+                    "seed": 882867584,
+                    "area": "A",
+                    "x": 118,
+                    "y": 451,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 3,
+                    "seed": 1248821120,
+                    "area": "A",
+                    "x": 173,
+                    "y": 359,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 4,
+                    "seed": 254974336,
+                    "area": "A",
+                    "x": 180,
+                    "y": 306,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": false
+                },
+                {
+                    "index": 5,
+                    "seed": 1609558400,
+                    "area": "A",
+                    "x": 322,
+                    "y": 338,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": true
+                },
+                {
+                    "index": 6,
+                    "seed": 200506560,
+                    "area": "A",
+                    "x": 246,
+                    "y": 449,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": false
+                },
+                {
+                    "index": 7,
+                    "seed": 939493248,
+                    "area": "A",
+                    "x": 256,
+                    "y": 461,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 8,
+                    "seed": 2059003520,
+                    "area": "A",
+                    "x": 6,
+                    "y": 372,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 9,
+                    "seed": 1039172736,
+                    "area": "A",
+                    "x": 136,
+                    "y": 502,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 10,
+                    "seed": 1199609856,
+                    "area": "A",
+                    "x": 249,
+                    "y": 233,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 11,
+                    "seed": 130123320,
+                    "area": "A",
+                    "x": 368,
+                    "y": 459,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 12,
+                    "seed": 340871392,
+                    "area": "A",
+                    "x": 303,
+                    "y": 537,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 13,
+                    "seed": 166939088,
+                    "area": "A",
+                    "x": 176,
+                    "y": 237,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": true
+                },
+                {
+                    "index": 14,
+                    "seed": 1934982400,
+                    "area": "B",
+                    "x": 60,
+                    "y": 84,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 15,
+                    "seed": 1046386880,
+                    "area": "B",
+                    "x": 104,
+                    "y": 137,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 16,
+                    "seed": 1771112960,
+                    "area": "B",
+                    "x": 269,
+                    "y": 118,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 17,
+                    "seed": 433089536,
+                    "area": "B",
+                    "x": 513,
+                    "y": 80,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 18,
+                    "seed": 434411392,
+                    "area": "B",
+                    "x": 400,
+                    "y": 48,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 19,
+                    "seed": 1256315008,
+                    "area": "B",
+                    "x": 313,
+                    "y": 104,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 20,
+                    "seed": 883189120,
+                    "area": "B",
+                    "x": 269,
+                    "y": 111,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 21,
+                    "seed": 381356064,
+                    "area": "B",
+                    "x": 212,
+                    "y": 134,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 22,
+                    "seed": 2120752256,
+                    "area": "B",
+                    "x": 135,
+                    "y": 121,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 23,
+                    "seed": 732516608,
+                    "area": "C",
+                    "x": 294,
+                    "y": 553,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 24,
+                    "seed": 1243389824,
+                    "area": "C",
+                    "x": 141,
+                    "y": 589,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 25,
+                    "seed": 599568640,
+                    "area": "C",
+                    "x": 77,
+                    "y": 786,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 26,
+                    "seed": 1594787456,
+                    "area": "C",
+                    "x": 221,
+                    "y": 846,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 27,
+                    "seed": 1503030784,
+                    "area": "C",
+                    "x": 178,
+                    "y": 989,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 28,
+                    "seed": 1671259136,
+                    "area": "C",
+                    "x": 129,
+                    "y": 610,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 29,
+                    "seed": 71303464,
+                    "area": "C",
+                    "x": 159,
+                    "y": 950,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 30,
+                    "seed": 2050920576,
+                    "area": "C",
+                    "x": 82,
+                    "y": 739,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 31,
+                    "seed": 1805682816,
+                    "area": "C",
+                    "x": 150,
+                    "y": 891,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 32,
+                    "seed": 1847424512,
+                    "area": "D",
+                    "x": 478,
+                    "y": 426,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 33,
+                    "seed": 528858272,
+                    "area": "D",
+                    "x": 422,
+                    "y": 528,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 34,
+                    "seed": 704022592,
+                    "area": "D",
+                    "x": 507,
+                    "y": 289,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 35,
+                    "seed": 467048896,
+                    "area": "D",
+                    "x": 453,
+                    "y": 479,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 36,
+                    "seed": 1640979968,
+                    "area": "D",
+                    "x": 443,
+                    "y": 255,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 37,
+                    "seed": 469385184,
+                    "area": "D",
+                    "x": 494,
+                    "y": 484,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        },
+        {
+            "name": "ZONE 96",
+            "type": "PD",
+            "map file": "ZONE_96.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 0,
+                    "seed": 61285652,
+                    "area": "A",
+                    "x": 307,
+                    "y": 198,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 1,
+                    "seed": 445417792,
+                    "area": "A",
+                    "x": 305,
+                    "y": 289,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 2,
+                    "seed": 803509824,
+                    "area": "A",
+                    "x": 304,
+                    "y": 362,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 3,
+                    "seed": 218469056,
+                    "area": "A",
+                    "x": 300,
+                    "y": 382,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 4,
+                    "seed": 30999272,
+                    "area": "A",
+                    "x": 353,
+                    "y": 476,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 5,
+                    "seed": 1857739008,
+                    "area": "B",
+                    "x": 551,
+                    "y": 42,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 6,
+                    "seed": 862315648,
+                    "area": "B",
+                    "x": 498,
+                    "y": 63,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 7,
+                    "seed": 1868668416,
+                    "area": "B",
+                    "x": 520,
+                    "y": 77,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 8,
+                    "seed": 1990500480,
+                    "area": "B",
+                    "x": 440,
+                    "y": 155,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 9,
+                    "seed": 1569206400,
+                    "area": "B",
+                    "x": 489,
+                    "y": 168,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 10,
+                    "seed": 1627826688,
+                    "area": "B",
+                    "x": 512,
+                    "y": 168,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 11,
+                    "seed": 1976891520,
+                    "area": "C",
+                    "x": 473,
+                    "y": 201,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 12,
+                    "seed": 617320448,
+                    "area": "C",
+                    "x": 453,
+                    "y": 193,
+                    "z": 1,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 13,
+                    "seed": 1982382464,
+                    "area": "C",
+                    "x": 483,
+                    "y": 294,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 14,
+                    "seed": 1065242944,
+                    "area": "C",
+                    "x": 576,
+                    "y": 206,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 15,
+                    "seed": 935638784,
+                    "area": "C",
+                    "x": 576,
+                    "y": 236,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 16,
+                    "seed": 492155392,
+                    "area": "E",
+                    "x": 616,
+                    "y": 281,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 17,
+                    "seed": 1329168384,
+                    "area": "E",
+                    "x": 702,
+                    "y": 310,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 18,
+                    "seed": 697489600,
+                    "area": "E",
+                    "x": 703,
+                    "y": 333,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 19,
+                    "seed": 617208576,
+                    "area": "E",
+                    "x": 692,
+                    "y": 446,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 20,
+                    "seed": 570942272,
+                    "area": "E",
+                    "x": 635,
+                    "y": 449,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 21,
+                    "seed": 637725440,
+                    "area": "E",
+                    "x": 820,
+                    "y": 499,
+                    "z": -1,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 22,
+                    "seed": 1289287552,
+                    "area": "E",
+                    "x": 858,
+                    "y": 555,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 23,
+                    "seed": 1876053248,
+                    "area": "E",
+                    "x": 973,
+                    "y": 484,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 24,
+                    "seed": 232825632,
+                    "area": "E",
+                    "x": 944,
+                    "y": 555,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 25,
+                    "seed": 982680448,
+                    "area": "E",
+                    "x": 966,
+                    "y": 572,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 26,
+                    "seed": 1839316608,
+                    "area": "D",
+                    "x": 532,
+                    "y": 399,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 27,
+                    "seed": 69855424,
+                    "area": "D",
+                    "x": 461,
+                    "y": 527,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 28,
+                    "seed": 908397184,
+                    "area": "D",
+                    "x": 266,
+                    "y": 546,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 29,
+                    "seed": 2129120512,
+                    "area": "D",
+                    "x": 121,
+                    "y": 561,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 30,
+                    "seed": 269965472,
+                    "area": "F",
+                    "x": 350,
+                    "y": 611,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 31,
+                    "seed": 1215162240,
+                    "area": "F",
+                    "x": 352,
+                    "y": 674,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 32,
+                    "seed": 869198080,
+                    "area": "F",
+                    "x": 315,
+                    "y": 674,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 33,
+                    "seed": 1324672256,
+                    "area": "F",
+                    "x": 193,
+                    "y": 642,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 34,
+                    "seed": 1222559232,
+                    "area": "F",
+                    "x": 111,
+                    "y": 753,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 35,
+                    "seed": 68146536,
+                    "area": "F",
+                    "x": 57,
+                    "y": 743,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 36,
+                    "seed": 544221824,
+                    "area": "A",
+                    "x": 309,
+                    "y": 231,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                }
+            ]
+        },
+        {
+            "name": "ZONE 99",
+            "type": "PD",
+            "map file": "ZONE_99.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 0,
+                    "seed": 873915648,
+                    "area": "A",
+                    "x": 47,
+                    "y": 23,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 1,
+                    "seed": 986798848,
+                    "area": "A",
+                    "x": 66,
+                    "y": 9,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 2,
+                    "seed": 1349864704,
+                    "area": "A",
+                    "x": 36,
+                    "y": 33,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 3,
+                    "seed": 826177216,
+                    "area": "A",
+                    "x": 177,
+                    "y": 68,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 4,
+                    "seed": 109636408,
+                    "area": "A",
+                    "x": 200,
+                    "y": 105,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 5,
+                    "seed": 1829266560,
+                    "area": "A",
+                    "x": 84,
+                    "y": 118,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 6,
+                    "seed": 151322096,
+                    "area": "A",
+                    "x": 24,
+                    "y": 365,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 7,
+                    "seed": 2139366912,
+                    "area": "A",
+                    "x": 183,
+                    "y": 365,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 8,
+                    "seed": 176712192,
+                    "area": "B",
+                    "x": 552,
+                    "y": 334,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 9,
+                    "seed": 836380864,
+                    "area": "B",
+                    "x": 392,
+                    "y": 418,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 10,
+                    "seed": 710461120,
+                    "area": "B",
+                    "x": 465,
+                    "y": 478,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 11,
+                    "seed": 1204032768,
+                    "area": "B",
+                    "x": 547,
+                    "y": 484,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 12,
+                    "seed": 1547538944,
+                    "area": "B",
+                    "x": 456,
+                    "y": 539,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 13,
+                    "seed": 477756832,
+                    "area": "B",
+                    "x": 276,
+                    "y": 550,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 14,
+                    "seed": 1728904064,
+                    "area": "C",
+                    "x": 146,
+                    "y": 675,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 15,
+                    "seed": 777345920,
+                    "area": "C",
+                    "x": 233,
+                    "y": 672,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 16,
+                    "seed": 471355424,
+                    "area": "C",
+                    "x": 308,
+                    "y": 675,
+                    "z": -1,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 17,
+                    "seed": 2045445632,
+                    "area": "C",
+                    "x": 469,
+                    "y": 676,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 18,
+                    "seed": 76035664,
+                    "area": "C",
+                    "x": 492,
+                    "y": 677,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 19,
+                    "seed": 1296795904,
+                    "area": "C",
+                    "x": 510,
+                    "y": 667,
+                    "z": -1,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 20,
+                    "seed": 1405537408,
+                    "area": "C",
+                    "x": 654,
+                    "y": 621,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 21,
+                    "seed": 694714048,
+                    "area": "C",
+                    "x": 653,
+                    "y": 649,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 22,
+                    "seed": 1569820928,
+                    "area": "C",
+                    "x": 492,
+                    "y": 628,
+                    "z": -1,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 23,
+                    "seed": 1545099008,
+                    "area": "D",
+                    "x": 287,
+                    "y": 833,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 24,
+                    "seed": 2093378560,
+                    "area": "D",
+                    "x": 307,
+                    "y": 846,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": false
+                },
+                {
+                    "index": 25,
+                    "seed": 1937099264,
+                    "area": "D",
+                    "x": 345,
+                    "y": 755,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": false
+                },
+                {
+                    "index": 26,
+                    "seed": 1339831808,
+                    "area": "D",
+                    "x": 374,
+                    "y": 753,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": false
+                },
+                {
+                    "index": 27,
+                    "seed": 2038931328,
+                    "area": "D",
+                    "x": 399,
+                    "y": 763,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": true
+                },
+                {
+                    "index": 28,
+                    "seed": 887546560,
+                    "area": "D",
+                    "x": 424,
+                    "y": 771,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": false
+                },
+                {
+                    "index": 29,
+                    "seed": 967378816,
+                    "area": "D",
+                    "x": 360,
+                    "y": 818,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": false
+                },
+                {
+                    "index": 30,
+                    "seed": 652375360,
+                    "area": "D",
+                    "x": 433,
+                    "y": 883,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": false
+                },
+                {
+                    "index": 31,
+                    "seed": 108968832,
+                    "area": "D",
+                    "x": 463,
+                    "y": 883,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": true
+                },
+                {
+                    "index": 32,
+                    "seed": 659041984,
+                    "area": "D",
+                    "x": 436,
+                    "y": 700,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 33,
+                    "seed": 153257264,
+                    "area": "D",
+                    "x": 466,
+                    "y": 700,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 34,
+                    "seed": 734303808,
+                    "area": "D",
+                    "x": 568,
+                    "y": 802,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 35,
+                    "seed": 1346262912,
+                    "area": "D",
+                    "x": 640,
+                    "y": 790,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": true
+                },
+                {
+                    "index": 36,
+                    "seed": 1931501696,
+                    "area": "A",
+                    "x": 205,
+                    "y": 317,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 37,
+                    "seed": 886437184,
+                    "area": "D",
+                    "x": 646,
+                    "y": 714,
+                    "z": 1,
+                    "lock": 1,
+                    "islocker": false
+                }
+            ]
+        }
+    ]
+}
