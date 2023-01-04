@@ -17,9 +17,9 @@ class ID_:
         self.zone_size_preset_ = zone_size_preset
 
     def print_data(self):
-        print("Box Index: {} -> {}".format(self.index_, self.area_))
+        print("{} -> {}".format(self.index_, self.area_))
 
-    def draw_container(self, background):
+    def draw_container(self, background, key_symbol=False):
         if self.zone_size_preset_ == 0:
             if self.islocker_:
                 container_image = Image.open("assets/locker_small.png")
@@ -32,7 +32,14 @@ class ID_:
             else:
                 container_image = Image.open("assets/box.png")
             font_size = 55
-        
+
+        draw = ImageDraw.Draw(background)
+        font = ImageFont.truetype("assets/OpenSans-Bold.ttf", font_size)
+
+        if key_symbol:
+            if self.zone_size_preset_ == 0:
+                draw.ellipse((self.x_ - 18, self.y_ - 20, self.x_ + 42, self.y_ + 40), fill=(100, 100, 255))
+
         offset_x = 0
         if self.index_ >= 10:
             offset_x = - font_size/4
@@ -40,8 +47,7 @@ class ID_:
 
         background.paste(container_image, (self.x_, self.y_), container_image)
 
-        draw = ImageDraw.Draw(background)
-        font = ImageFont.truetype("assets/OpenSans-Bold.ttf", font_size)
+        
         
         r, g, b = 0, 255, 0
         
@@ -56,16 +62,16 @@ class ID_:
             draw.text((self.x_ + 10, self.y_ - 20),'^',(0,0,0),font=font)
         elif self.z_ < 0:
             draw.text((self.x_ + 10, self.y_ - 20),'v',(0,0,0),font=font)
-    
+
+
     def tojson(self):
         return json.dumps(self.__dict__, indent=4)
 
 class ZONE_:
-    def __init__(self, name, type, idlist, image_file, package_name):
+    def __init__(self, name, type, iddict, image_file, package_name):
         self.name_ = name
         self.type_ = type
-        self.idlist_ = idlist
-        self.id_start_index_ = idlist[0].index_
+        self.iddict_ = iddict
         self.image_file_ = image_file
         self.image_save_ = Image.open("packages/" + package_name + '/' + image_file)
 

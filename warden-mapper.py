@@ -115,13 +115,13 @@ if not nofile:
 
 if not nofile:
     for zone in json_data['zones']:
-        idlist = []
+        iddict = {}
         #Loading all IDs
         for id in zone['data']:
-            idlist.append(ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker'], zone_size_preset=zone['size preset']))
-        
+            iddict[id['index']] = ID_(index=id['index'], seed=id['seed'], area=id['area'], x=id['x'], y=id['y'], z=id['z'], lock=id['lock'], islocker=id['islocker'], zone_size_preset=zone['size preset'])
+                
         #Creating ID List for a zone
-        zone_list.append(ZONE_(name=zone['name'], type=zone['type'], idlist= idlist, image_file=zone['map file'], package_name=package_name))
+        zone_list.append(ZONE_(name=zone['name'], type=zone['type'], iddict=iddict, image_file=zone['map file'], package_name=package_name))
 
 #FINDING LAST RUN LOG
 for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1], 'r', encoding='utf-8').readlines()):
@@ -194,41 +194,65 @@ for index, value in enumerate(listOfLines):
         lineToBeRead = lineToBeRead[15:85]
             
         individualWords = lineToBeRead.split()
-        seedList.append(individualWords[2][0:10])
+        seedList.append(int(individualWords[2][0:10]))
+        
 
-#CHECKING AND GENERATING KEY MAPS
-if look_for_key:
-    if nofile:
-        for i in range(len(keyZoneList)):
-            print(keynameList[i] + " found in " + keyZoneList[i][:4] + ' ' + keyZoneList[i][4:] + " -> " + keyriList[i])
-    for zone in zone_list:
-        if zone.type_ == "KEY":
-            for i in range(len(keyriList)):
-                print(keynameList[i] + " found in " + zone.name_ + ':')
-    
-                zone.idlist_[int(keyriList[i]) - zone.id_start_index_].print_data()
-                zone.idlist_[int(keyriList[i]) - zone.id_start_index_].draw_container(zone.image_save_)
+#LISTNG RESULTS
+if nofile:
+    for i in range(len(keyZoneList)):
+        print(keynameList[i] + " found in " + keyZoneList[i][:4] + ' ' + keyZoneList[i][4:] + " -> " + keyriList[i])
 
-#CHECKING AND GENERATING ID MAPS
+print(keyriList)
+print(keynameList)
+print(keyZoneList)
+
 if not nofile:
     if json_data['look for IDs']:
-        valid_id_count = 0
+        valid_item_count = 0
 
         for zone in zone_list:
-            if zone.type_ != "KEY":
-                print(zone.type_ + " FOUND IN " + zone.name_ + ':')
-                for id_log in seedList:
-                    for id_check in zone.idlist_:
-                        if id_log == str(id_check.seed_):
-                            valid_id_count += 1
-                            id_check.print_data()
-                            zone.idlist_[id_check.index_ - zone.id_start_index_].draw_container(zone.image_save_)
+            print(zone.type_ + " FOUND IN " + zone.name_ + ':')
+
+            for key_log_index in range(len(keyZoneList)):
+                if keyZoneList[key_log_index] == zone.name_.replace(' ', ''):
+                    print(keynameList[key_log_index], end=": ")
+                    zone.iddict_[int(keyriList[key_log_index])].print_data()
+                    zone.iddict_[int(keyriList[key_log_index])].draw_container(zone.image_save_, True)
+
+            for seed_log in seedList:
+                for id_index in zone.iddict_:
+                    if seed_log == zone.iddict_[id_index].seed_:
+                        valid_item_count += 1
+                        
+                        zone.iddict_[id_index].print_data()
+                        zone.iddict_[id_index].draw_container(zone.image_save_)
+
+                        
+
+        #TO BE REPLACED
+
+        """ for zone in zone_list:
+            print(zone.type_ + " FOUND IN " + zone.name_ + ':')
+            for id_log in seedList:
+                for id_check in zone.idlist_:
+                    if id_log == str(id_check.seed_):
+                        valid_item_count += 1
+                        id_check.print_data()
+                        zone.idlist_[id_check.index_ - zone.id_start_index_].draw_container(zone.image_save_)
+
+            for i in range(len(keyriList)):
+                print(keynameList[i] + " found in " + zone.name_ + ':')
+        
+                zone.idlist_[int(keyriList[i]) - zone.id_start_index_].print_data()
+                zone.idlist_[int(keyriList[i]) - zone.id_start_index_].draw_container(zone.image_save_) """
+        
+        #END OF TO BE REPLACED
 
         if validate_run:
-            if valid_id_count >= validate_run_value:
-                print('\033[92m' + "VALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
+            if valid_item_count >= validate_run_value:
+                print('\033[92m' + "VALID RUN - VALID ITEMS FOUND : " + str(valid_item_count) + '\033[0m')
             else:
-                print('\033[91m' + "INVALID RUN - VALID IDs FOUND : " + str(valid_id_count) + '\033[0m')
+                print('\033[91m' + "INVALID RUN - VALID ITEMS FOUND : " + str(valid_item_count) + '\033[0m')
 
 #SAVE ALL IMAGES
 if not nomap:
@@ -269,5 +293,3 @@ if SessionSeed:
     json_data['seed learning data'].append(json_object)
     json_file.seek(0)
     json.dump(json_data, json_file, indent=4)
-
-input()
