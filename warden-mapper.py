@@ -202,10 +202,6 @@ if nofile:
     for i in range(len(keyZoneList)):
         print(keynameList[i] + " found in " + keyZoneList[i][:4] + ' ' + keyZoneList[i][4:] + " -> " + keyriList[i])
 
-print(keyriList)
-print(keynameList)
-print(keyZoneList)
-
 if not nofile:
     if json_data['look for IDs']:
         valid_item_count = 0
