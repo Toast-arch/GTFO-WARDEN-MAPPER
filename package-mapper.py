@@ -69,6 +69,7 @@ if __name__=="__main__":
    defaultlock = False
    autoindex = False
    auto_index_start_value = 0
+   noseed = False
    autoseed = False
    autoseed_list = []
    auto_area = False
@@ -77,6 +78,17 @@ if __name__=="__main__":
 
    #ARGUMENT APPLY
    for arg in arg_list:
+      if arg.key_ == '--help':
+        print("usage: package-mapper.py <package name> [--help] [--defaultz] [--defaultlock] [--autoindex int] [--noseed] [--autoseed path] [--autoarea]")
+        print()
+        print("   defaultz\t\tAlways sets z to 0.")
+        print("   defaultlock\t\tAlways sets lock to 0.")
+        print("   autoindex int\tAuto indexes starting at provided number.")
+        print("   noseed\t\tAlways sets seed to 0.")
+        print("   autoseed path\tAuto fills in seeds from a txt file. Path to the txt file must be provided.")
+        print("   autoarea\t\tFills in the area automatically based on blank lines seperating seeds in txt file. Only works with autoseed.")
+        exit()
+
       if arg.key_ == '--defaultz':
          defaultz = True
 
@@ -89,7 +101,10 @@ if __name__=="__main__":
             print("--autoindex requires a starting index (int).")
             exit()
          auto_index_start_value = int(arg.sub_list_[0])
-      
+
+      if arg.key_ == '--noseed':
+         noseed = True
+
       if arg.key_ == '--autoseed':
          autoseed = True
          
@@ -189,6 +204,8 @@ if __name__=="__main__":
             auto_area_value = chr(ord(auto_area_value) + 1)
          print("Object index: " + str(autoseed_list[i + auto_area_seed_offset]))
          seed = autoseed_list[i + auto_area_seed_offset]
+      elif noseed:
+         seed = 0
       else:
          while True:
             seed = input("Object seed: ")

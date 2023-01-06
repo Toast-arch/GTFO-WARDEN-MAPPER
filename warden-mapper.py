@@ -101,6 +101,8 @@ keyriList = []
 keynameList = []
 keyZoneList = []
 cargozoneList = []
+hsu_name = ""
+hsu_location = ""
 SessionSeed = None
 
 look_for_pickup = nofile or json_data['look for pickup']
@@ -136,16 +138,30 @@ for index, value in enumerate(listOfLines):
         
     lineToBeRead = value
 
+    #SESSION SEED
     if lineToBeRead[46:55] == "GENERATE!" and learning:
         lineToBeRead = lineToBeRead[46:]
 
         individualWords = lineToBeRead.split()
         SessionSeed = individualWords[2][:-8]
+    #WARDEN ITEM ID
     elif (lineToBeRead[30:89] == "LG_Distribute_WardenObjective.DistributeGatherRetrieveItems" and look_for_pickup):
         lineToBeRead = lineToBeRead[30:]
 
         individualWords = lineToBeRead.split()
         wardenitemID = int(individualWords[6])
+    #HSU NAME
+    elif (lineToBeRead[38:72] == "RegisterObjectiveItemForCollection" and look_for_pickup):
+        lineToBeRead = lineToBeRead[38:]
+
+        individualWords = lineToBeRead.split()
+        hsu_name = individualWords[3]
+    #HSU ZONE
+    elif (lineToBeRead[151:169] == "HSU_FindTakeSample" and look_for_pickup):
+        lineToBeRead = lineToBeRead[151:]
+
+        individualWords = lineToBeRead.split()
+        hsu_location = "ZONE " + individualWords[3][:-1]
     elif (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and look_for_pickup:
         lineToBeRead = lineToBeRead[30:173]
         
@@ -198,6 +214,9 @@ for index, value in enumerate(listOfLines):
         
 
 #LISTNG RESULTS
+if hsu_name != "":
+    print(hsu_name + " found in " + hsu_location)
+
 if nofile:
     for i in range(len(keyZoneList)):
         print(keynameList[i] + " found in " + keyZoneList[i][:4] + ' ' + keyZoneList[i][4:] + " -> " + keyriList[i])
