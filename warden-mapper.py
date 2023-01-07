@@ -4,9 +4,8 @@
 import os
 import sys
 import json
-from PIL import Image
 
-from assets.dataclasses import ID_, ZONE_, ARG_
+from assets.dataclasses import ID_, ZONE_, ARG_, RESULT_
 
 #PATH TO YOUR GTFO APPDATA FORLDER
 directory = "C:/Users/" + os.environ.get("USERNAME") + "/AppData/LocalLow/10 Chambers Collective/GTFO/"
@@ -62,8 +61,6 @@ while i < len(sys.argv):
 
 package_name = level_name
 nofile = not os.path.exists("packages/" + package_name + '/' + package_name + ".json")
-if nofile:
-    print("No package found for " + level_name + ". Running with default settings.")
 nomap = False
 learning = False
 learning_input = False
@@ -101,8 +98,8 @@ keyriList = []
 keynameList = []
 keyZoneList = []
 cargozoneList = []
-hsu_name = ""
-hsu_location = ""
+wardenitem_name_list = []
+wardenitem_zone_list = []
 SessionSeed = None
 
 look_for_pickup = nofile or json_data['look for pickup']
@@ -155,20 +152,24 @@ for index, value in enumerate(listOfLines):
         lineToBeRead = lineToBeRead[38:]
 
         individualWords = lineToBeRead.split()
-        hsu_name = individualWords[3]
+        if len(individualWords) > 3:
+            wardenitem_name_list.append(individualWords[3])
+        else:
+            wardenitem_name_list.append("")
     #HSU ZONE
     elif (lineToBeRead[151:169] == "HSU_FindTakeSample" and look_for_pickup):
         lineToBeRead = lineToBeRead[151:]
 
         individualWords = lineToBeRead.split()
-        hsu_location = "ZONE " + individualWords[3][:-1]
+        wardenitem_zone_list.append("ZONE " + individualWords[3][:-1])
+    #WARDEN ITEMS
     elif (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and look_for_pickup:
         lineToBeRead = lineToBeRead[30:173]
         
         individualWords = lineToBeRead.split()
         cargozoneList.append(individualWords[5])
 
-        if wardenitemID == 128:
+        """ if wardenitemID == 128:
             print("ID", end='')
         elif wardenitemID == 129:
             print("PD", end='')
@@ -194,76 +195,96 @@ for index, value in enumerate(listOfLines):
             print("Collection case", end='')
         else:
             print("Terminal", end='')
-        print(" found in " + individualWords[5][:4] + ' ' + individualWords[5][4:])
+        print(" found in " + individualWords[5][:4] + ' ' + individualWords[5][4:]) """
+        if wardenitemID != 128 and wardenitemID != 129 and wardenitemID != 169:
+            wardenitem_zone_list.append(individualWords[5][:4] + ' ' + individualWords[5][4:])
+    #KEY NAME
     elif (lineToBeRead[35:56] == "CalcAreaWeights START") and look_for_key:
         lineToBeRead = lineToBeRead[35:]
 
         individualWords = lineToBeRead.split()
         keynameList.append(individualWords[4])
+    #KEY RI AND ZONE
     elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and look_for_key:
         lineToBeRead = lineToBeRead[30:186]
 
         individualWords = lineToBeRead.split()
         keyriList.append(individualWords[12])
-        keyZoneList.append(individualWords[4])
+        keyZoneList.append(individualWords[4][:4] + ' ' + individualWords[4][4:])
+    #SEED
     elif (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and look_for_ids:
         lineToBeRead = lineToBeRead[15:85]
             
         individualWords = lineToBeRead.split()
         seedList.append(int(individualWords[2][0:10]))
-        
 
-#LISTNG RESULTS
-if hsu_name != "":
-    print(hsu_name + " found in " + hsu_location)
+#GENERATING RESULTS
+result_zones_dict = {}
+wardenitem_name_list.reverse()
+wardenitem_zone_list.sort()
 
-if nofile:
-    for i in range(len(keyZoneList)):
-        print(keynameList[i] + " found in " + keyZoneList[i][:4] + ' ' + keyZoneList[i][4:] + " -> " + keyriList[i])
+#NOFILE KEYS
+for i in range(len(keyZoneList)):
+    if keyZoneList[i] not in result_zones_dict:
+        result_zones_dict[keyZoneList[i]] = {}
+    result_zones_dict[keyZoneList[i]][keynameList[i]] = RESULT_(keynameList[i], "UNK", keyriList[i])
 
+#PURGING INCOMPLETE DATA
+i = 0
+while i < len(wardenitem_zone_list):
+    if wardenitem_name_list[i] == "":
+        wardenitem_name_list = wardenitem_name_list[:i] + wardenitem_name_list[i + 1:]
+        wardenitem_zone_list = wardenitem_zone_list[:i] + wardenitem_zone_list[i + 1:]
+        i = -1
+    i += 1
+
+#NOFILE HSU
+for i in range(len(wardenitem_zone_list)):
+    if wardenitem_zone_list[i] not in result_zones_dict:
+        result_zones_dict[wardenitem_zone_list[i]] = {}
+    result_zones_dict[wardenitem_zone_list[i]][wardenitem_name_list[i]] = RESULT_(wardenitem_name_list[i])
+
+#MAPPED DATA
 if not nofile:
+    #MAPPED KEYS
+    if json_data['look for key']:
+        for key_log_index in range(len(keyZoneList)):
+            for zone in zone_list:
+                if keyZoneList[key_log_index] == zone.name_:
+                    result_zones_dict[zone.name_][keynameList[key_log_index]] = RESULT_(keynameList[key_log_index], zone.iddict_[int(keyriList[key_log_index])].area_, zone.iddict_[int(keyriList[key_log_index])].index_)
+                    zone.iddict_[int(keyriList[key_log_index])].draw_container(zone.image_save_, True)
+
+    #MAPPED IDS
     if json_data['look for IDs']:
         valid_item_count = 0
 
         for zone in zone_list:
-            print(zone.type_ + " FOUND IN " + zone.name_ + ':')
-
-            for key_log_index in range(len(keyZoneList)):
-                if keyZoneList[key_log_index] == zone.name_.replace(' ', ''):
-                    print(keynameList[key_log_index], end=": ")
-                    zone.iddict_[int(keyriList[key_log_index])].print_data()
-                    zone.iddict_[int(keyriList[key_log_index])].draw_container(zone.image_save_, True)
-
             for seed_log in seedList:
                 for id_index in zone.iddict_:
                     if seed_log == zone.iddict_[id_index].seed_:
                         valid_item_count += 1
+                        if zone.name_ not in result_zones_dict:
+                            result_zones_dict[zone.name_] = {}
                         
-                        zone.iddict_[id_index].print_data()
+                        if zone.type_ + str(zone.iddict_[id_index].index_) in result_zones_dict[zone.name_]:
+                            result_zones_dict[zone.name_][zone.type_ + "{:0>2d}".format(zone.iddict_[id_index].index_)] = RESULT_(zone.type_, zone.iddict_[id_index].area_, zone.iddict_[id_index].index_, result_zones_dict[zone.name_][zone.type_ + str(zone.iddict_[id_index].index_)].n_ + 1)
+                        else:
+                            result_zones_dict[zone.name_][zone.type_ + "{:0>2d}".format(zone.iddict_[id_index].index_)] = RESULT_(zone.type_, zone.iddict_[id_index].area_, zone.iddict_[id_index].index_)
+
                         zone.iddict_[id_index].draw_container(zone.image_save_)
 
-                        
+#PRINTING RESULTS IN ORDER
+sorted_zones_dict = sorted(result_zones_dict.keys(), key=lambda x:x.lower())
 
-        #TO BE REPLACED
+for result_zone_key in sorted_zones_dict:
+    print('\033[95m' + result_zone_key + ':' + '\033[0m')
 
-        """ for zone in zone_list:
-            print(zone.type_ + " FOUND IN " + zone.name_ + ':')
-            for id_log in seedList:
-                for id_check in zone.idlist_:
-                    if id_log == str(id_check.seed_):
-                        valid_item_count += 1
-                        id_check.print_data()
-                        zone.idlist_[id_check.index_ - zone.id_start_index_].draw_container(zone.image_save_)
+    sorted_results_dict = sorted(result_zones_dict[result_zone_key].keys(), key=lambda x:x.lower())
 
-            for i in range(len(keyriList)):
-                print(keynameList[i] + " found in " + zone.name_ + ':')
-        
-                zone.idlist_[int(keyriList[i]) - zone.id_start_index_].print_data()
-                zone.idlist_[int(keyriList[i]) - zone.id_start_index_].draw_container(zone.image_save_) """
-        
-        #END OF TO BE REPLACED
+    for result_key in sorted_results_dict:
+        result_zones_dict[result_zone_key][result_key].print_data()
 
-        if validate_run:
+if validate_run:
             if valid_item_count >= validate_run_value:
                 print('\033[92m' + "VALID RUN - VALID ITEMS FOUND : " + str(valid_item_count) + '\033[0m')
             else:

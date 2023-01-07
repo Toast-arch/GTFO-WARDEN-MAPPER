@@ -82,3 +82,22 @@ class ARG_:
     def __init__(self, key, sub_list=[]):
         self.key_ = key
         self.sub_list_ = sub_list
+
+class RESULT_:
+    def __init__(self, item_name, area = "UNK", ri = -1, n = 1):
+        self.item_name_ = item_name
+        self.area_ = area
+        self.ri_ = ri
+        self.n_ = n
+
+    def print_data(self):
+        if self.ri_ != -1:
+            print(self.item_name_ + " -> " + "{: >2d}".format(int(self.ri_)) + " : " + self.area_, end='')
+        else:
+            print(self.item_name_ + " -> " + self.area_, end='')
+        
+        if self.n_ == 1:
+            print()
+        else:
+            print(" x" + str(self.n_))
+        

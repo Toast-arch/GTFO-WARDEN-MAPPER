@@ -1,0 +1,258 @@
+{
+    "name": "R1B2",
+    "look for key": true,
+    "look for IDs": false,
+    "look for pickup": true,
+    "validate run": false,
+    "validate run requirement": 0,
+    "zones": [
+        {
+            "name": "ZONE 22",
+            "type": "KEY",
+            "map file": "ZONE_22.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 6,
+                    "seed": 0,
+                    "area": "B",
+                    "x": 908,
+                    "y": 287,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 7,
+                    "seed": 0,
+                    "area": "B",
+                    "x": 942,
+                    "y": 422,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 8,
+                    "seed": 0,
+                    "area": "B",
+                    "x": 854,
+                    "y": 67,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 9,
+                    "seed": 0,
+                    "area": "B",
+                    "x": 918,
+                    "y": 495,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 10,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 158,
+                    "y": 371,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 11,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 297,
+                    "y": 139,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 12,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 55,
+                    "y": 183,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 13,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 207,
+                    "y": 210,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 14,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 590,
+                    "y": 29,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 15,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 134,
+                    "y": 24,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 16,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 633,
+                    "y": 169,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 17,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 549,
+                    "y": 10,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 18,
+                    "seed": 0,
+                    "area": "C",
+                    "x": 212,
+                    "y": 80,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 19,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 33,
+                    "y": 473,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 20,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 632,
+                    "y": 218,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 21,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 528,
+                    "y": 372,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 22,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 862,
+                    "y": 485,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 23,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 652,
+                    "y": 278,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 24,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 640,
+                    "y": 581,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 25,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 780,
+                    "y": 519,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 26,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 103,
+                    "y": 742,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 27,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 706,
+                    "y": 723,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 28,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 372,
+                    "y": 566,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 29,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 705,
+                    "y": 444,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        }
+    ]
+}
