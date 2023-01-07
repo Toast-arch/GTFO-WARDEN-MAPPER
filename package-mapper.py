@@ -124,7 +124,9 @@ if __name__=="__main__":
 
       if arg.key_ == '--autoarea':
          auto_area = True
-
+         if len(arg.sub_list_) != 0:
+            auto_area_value = arg.sub_list_[0]
+   
    auto_area = auto_area and autoseed
 
    global global_x
@@ -139,22 +141,20 @@ if __name__=="__main__":
    #CREATING NEW ZONE
    name = input("New zone name: ")
    type = input("New zone type: ")
-   
+
    path_auto_find = False
-   try_map_file_auto = name[0:4] + '_' + name[5:] + '.png'
-   try_path_auto = os.path.join("packages", package_name, try_map_file_auto)
-
-   if os.path.exists(try_path_auto):
-      map_file = try_map_file_auto
-      path_auto_find = True
-      print("New zone map file: " + try_map_file_auto)
-
+   
    while not path_auto_find:
       map_file = input("New zone map file: ")
+
+      if map_file == "":
+         map_file = name[0:4] + '_' + name[5:] + '.png'
+         try_path = os.path.join("packages", package_name, map_file)
 
       try_path = os.path.join("packages", package_name, map_file)
 
       if os.path.exists(try_path):
+         print("New zone map file: " + map_file)
          break
       else:
          print(try_path + " does not exist.")

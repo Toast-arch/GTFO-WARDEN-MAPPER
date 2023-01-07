@@ -1,0 +1,653 @@
+{
+    "name": "R1B1",
+    "look for key": false,
+    "look for IDs": true,
+    "look for pickup": false,
+    "validate run": false,
+    "validate run requirement": 0,
+    "zones": [
+        {
+            "name": "ZONE 41",
+            "type": "ID",
+            "map file": "ZONE_41.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 22,
+                    "seed": 984114432,
+                    "area": "D",
+                    "x": 642,
+                    "y": 861,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 23,
+                    "seed": 948195328,
+                    "area": "D",
+                    "x": 762,
+                    "y": 750,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 24,
+                    "seed": 597772224,
+                    "area": "D",
+                    "x": 579,
+                    "y": 862,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 25,
+                    "seed": 1649406080,
+                    "area": "D",
+                    "x": 519,
+                    "y": 702,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 26,
+                    "seed": 1743854464,
+                    "area": "D",
+                    "x": 293,
+                    "y": 871,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 27,
+                    "seed": 1383854336,
+                    "area": "D",
+                    "x": 696,
+                    "y": 750,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 28,
+                    "seed": 1523328384,
+                    "area": "E",
+                    "x": 809,
+                    "y": 6,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 29,
+                    "seed": 2108400128,
+                    "area": "E",
+                    "x": 861,
+                    "y": 389,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 30,
+                    "seed": 304443424,
+                    "area": "E",
+                    "x": 623,
+                    "y": 32,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 31,
+                    "seed": 633710016,
+                    "area": "E",
+                    "x": 835,
+                    "y": 574,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 32,
+                    "seed": 534577760,
+                    "area": "E",
+                    "x": 820,
+                    "y": 134,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 33,
+                    "seed": 957390208,
+                    "area": "E",
+                    "x": 837,
+                    "y": 7,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 34,
+                    "seed": 2008834304,
+                    "area": "E",
+                    "x": 920,
+                    "y": 396,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 35,
+                    "seed": 1222010624,
+                    "area": "E",
+                    "x": 622,
+                    "y": 83,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 36,
+                    "seed": 542235520,
+                    "area": "E",
+                    "x": 920,
+                    "y": 375,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        },
+        {
+            "name": "ZONE 42",
+            "type": "ID",
+            "map file": "ZONE_42.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 9,
+                    "seed": 340083008,
+                    "area": "B",
+                    "x": 319,
+                    "y": 376,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 10,
+                    "seed": 2119314176,
+                    "area": "B",
+                    "x": 370,
+                    "y": 405,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 11,
+                    "seed": 602519232,
+                    "area": "B",
+                    "x": 394,
+                    "y": 105,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 12,
+                    "seed": 677920320,
+                    "area": "B",
+                    "x": 439,
+                    "y": 5,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 13,
+                    "seed": 359848576,
+                    "area": "B",
+                    "x": 335,
+                    "y": 32,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 14,
+                    "seed": 789949824,
+                    "area": "B",
+                    "x": 426,
+                    "y": 105,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 15,
+                    "seed": 280212640,
+                    "area": "B",
+                    "x": 431,
+                    "y": 488,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 16,
+                    "seed": 820760768,
+                    "area": "B",
+                    "x": 382,
+                    "y": 201,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 17,
+                    "seed": 1022948032,
+                    "area": "B",
+                    "x": 370,
+                    "y": 426,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        },
+        {
+            "name": "ZONE 44",
+            "type": "ID",
+            "map file": "ZONE_44.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 9,
+                    "seed": 429850688,
+                    "area": "B",
+                    "x": 497,
+                    "y": 92,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 10,
+                    "seed": 686424320,
+                    "area": "B",
+                    "x": 362,
+                    "y": 226,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 11,
+                    "seed": 6672997,
+                    "area": "B",
+                    "x": 169,
+                    "y": 198,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 12,
+                    "seed": 2046335616,
+                    "area": "B",
+                    "x": 252,
+                    "y": 226,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 13,
+                    "seed": 1722253312,
+                    "area": "B",
+                    "x": 682,
+                    "y": 231,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 14,
+                    "seed": 650557184,
+                    "area": "B",
+                    "x": 682,
+                    "y": 200,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 15,
+                    "seed": 303969376,
+                    "area": "B",
+                    "x": 635,
+                    "y": 248,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 16,
+                    "seed": 750950080,
+                    "area": "B",
+                    "x": 165,
+                    "y": 279,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 17,
+                    "seed": 1858480128,
+                    "area": "B",
+                    "x": 516,
+                    "y": 213,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 18,
+                    "seed": 1572521472,
+                    "area": "B",
+                    "x": 643,
+                    "y": 188,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 19,
+                    "seed": 1402037376,
+                    "area": "B",
+                    "x": 459,
+                    "y": 328,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 20,
+                    "seed": 1525868160,
+                    "area": "B",
+                    "x": 525,
+                    "y": 38,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 21,
+                    "seed": 918495872,
+                    "area": "B",
+                    "x": 466,
+                    "y": 92,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 22,
+                    "seed": 328962720,
+                    "area": "B",
+                    "x": 167,
+                    "y": 225,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
+        },
+        {
+            "name": "ZONE 43",
+            "type": "ID",
+            "map file": "ZONE_43.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 0,
+                    "seed": 99638296,
+                    "area": "A",
+                    "x": 845,
+                    "y": 169,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 1,
+                    "seed": 1306445824,
+                    "area": "A",
+                    "x": 436,
+                    "y": 126,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 2,
+                    "seed": 1355021056,
+                    "area": "A",
+                    "x": 144,
+                    "y": 636,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 3,
+                    "seed": 538172160,
+                    "area": "A",
+                    "x": 29,
+                    "y": 69,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 4,
+                    "seed": 2117067264,
+                    "area": "A",
+                    "x": 363,
+                    "y": 46,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 5,
+                    "seed": 297661408,
+                    "area": "A",
+                    "x": 168,
+                    "y": 17,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 6,
+                    "seed": 879482816,
+                    "area": "A",
+                    "x": 46,
+                    "y": 858,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 7,
+                    "seed": 2128943616,
+                    "area": "A",
+                    "x": 447,
+                    "y": 106,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 8,
+                    "seed": 1865322240,
+                    "area": "A",
+                    "x": 524,
+                    "y": 87,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 9,
+                    "seed": 1124741632,
+                    "area": "A",
+                    "x": 30,
+                    "y": 807,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 10,
+                    "seed": 575860032,
+                    "area": "A",
+                    "x": 414,
+                    "y": 368,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 11,
+                    "seed": 1231047808,
+                    "area": "A",
+                    "x": 523,
+                    "y": 275,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 12,
+                    "seed": 93674608,
+                    "area": "A",
+                    "x": 457,
+                    "y": 262,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 13,
+                    "seed": 2132536064,
+                    "area": "A",
+                    "x": 457,
+                    "y": 222,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 14,
+                    "seed": 1308029056,
+                    "area": "B",
+                    "x": 212,
+                    "y": 697,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 15,
+                    "seed": 1732698368,
+                    "area": "B",
+                    "x": 214,
+                    "y": 670,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 16,
+                    "seed": 1883132416,
+                    "area": "B",
+                    "x": 392,
+                    "y": 701,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 17,
+                    "seed": 177641888,
+                    "area": "B",
+                    "x": 206,
+                    "y": 475,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 18,
+                    "seed": 2135087616,
+                    "area": "B",
+                    "x": 170,
+                    "y": 881,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 19,
+                    "seed": 1029891584,
+                    "area": "B",
+                    "x": 203,
+                    "y": 606,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 20,
+                    "seed": 979094528,
+                    "area": "B",
+                    "x": 139,
+                    "y": 879,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 21,
+                    "seed": 1549797632,
+                    "area": "B",
+                    "x": 400,
+                    "y": 795,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 22,
+                    "seed": 339605088,
+                    "area": "B",
+                    "x": 440,
+                    "y": 558,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                }
+            ]
+        }
+    ],
+    "seed learning data": []
+}

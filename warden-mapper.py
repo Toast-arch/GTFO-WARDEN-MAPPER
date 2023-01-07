@@ -199,20 +199,20 @@ for index, value in enumerate(listOfLines):
         if wardenitemID != 128 and wardenitemID != 129 and wardenitemID != 169:
             wardenitem_zone_list.append(individualWords[5][:4] + ' ' + individualWords[5][4:])
     #KEY NAME
-    elif (lineToBeRead[35:56] == "CalcAreaWeights START") and look_for_key:
+    elif (lineToBeRead[35:56] == "CalcAreaWeights START"):
         lineToBeRead = lineToBeRead[35:]
 
         individualWords = lineToBeRead.split()
         keynameList.append(individualWords[4])
     #KEY RI AND ZONE
-    elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession") and look_for_key:
+    elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession"):
         lineToBeRead = lineToBeRead[30:186]
 
         individualWords = lineToBeRead.split()
         keyriList.append(individualWords[12])
         keyZoneList.append(individualWords[4][:4] + ' ' + individualWords[4][4:])
     #SEED
-    elif (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen") and look_for_ids:
+    elif (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen"):
         lineToBeRead = lineToBeRead[15:85]
             
         individualWords = lineToBeRead.split()
@@ -257,7 +257,6 @@ if not nofile:
     #MAPPED IDS
     if json_data['look for IDs']:
         valid_item_count = 0
-
         for zone in zone_list:
             for seed_log in seedList:
                 for id_index in zone.iddict_:
