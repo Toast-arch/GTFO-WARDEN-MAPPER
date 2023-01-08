@@ -100,6 +100,8 @@ keyZoneList = []
 cargozoneList = []
 wardenitem_name_list = []
 wardenitem_zone_list = []
+wardenitem_areacode_list = []
+populate_area_mapping_dict = {}
 SessionSeed = None
 
 look_for_pickup = nofile or json_data['look for pickup']
@@ -159,9 +161,18 @@ for index, value in enumerate(listOfLines):
     #HSU ZONE
     elif (lineToBeRead[151:169] == "HSU_FindTakeSample" and look_for_pickup):
         lineToBeRead = lineToBeRead[151:]
-
+    
         individualWords = lineToBeRead.split()
         wardenitem_zone_list.append("ZONE " + individualWords[3][:-1])
+        wardenitem_areacode_list.append(individualWords[5])
+    elif (lineToBeRead[18:33] == "LG_PopulateZone" and look_for_pickup):
+        lineToBeRead = lineToBeRead[18:]
+        
+        individualWords = lineToBeRead.split()
+
+        if individualWords[4][26:-1].replace('_', ' ') not in populate_area_mapping_dict:
+            populate_area_mapping_dict[individualWords[4][26:-1].replace('_', ' ')] = {}
+        populate_area_mapping_dict[individualWords[4][26:-1].replace('_', ' ')][individualWords[2]] = ""
     #WARDEN ITEMS
     elif (lineToBeRead[30:102] == "LG_Distribute_WardenObjective.SelectZoneFromPlacementAndKeepTrackOnCount") and look_for_pickup:
         lineToBeRead = lineToBeRead[30:173]
@@ -229,6 +240,15 @@ for i in range(len(keyZoneList)):
         result_zones_dict[keyZoneList[i]] = {}
     result_zones_dict[keyZoneList[i]][keynameList[i]] = RESULT_(keynameList[i], "UNK", keyriList[i])
 
+""" print(wardenitem_name_list)
+print(wardenitem_zone_list)
+print(wardenitem_areacode_list) """
+
+#PURGING WRONG DATA ! SAFE MEASURE !
+if len(wardenitem_name_list) != len(wardenitem_zone_list):
+    wardenitem_zone_list.clear()
+    wardenitem_name_list.clear()
+
 #PURGING INCOMPLETE DATA
 i = 0
 while i < len(wardenitem_zone_list):
@@ -238,11 +258,25 @@ while i < len(wardenitem_zone_list):
         i = -1
     i += 1
 
+#EXPERIMENTAL POPULATE AREAS
+for populate_zone_key in populate_area_mapping_dict:
+    populate_area_mapping_dict[populate_zone_key] = dict(reversed(list(populate_area_mapping_dict[populate_zone_key].items())))
+
+    tmp_area = 'A'
+    for area_key in populate_area_mapping_dict[populate_zone_key]:
+        populate_area_mapping_dict[populate_zone_key][area_key] = tmp_area
+        tmp_area = chr(ord(tmp_area) + 1)
+
+
 #NOFILE HSU
 for i in range(len(wardenitem_zone_list)):
     if wardenitem_zone_list[i] not in result_zones_dict:
         result_zones_dict[wardenitem_zone_list[i]] = {}
-    result_zones_dict[wardenitem_zone_list[i]][wardenitem_name_list[i]] = RESULT_(wardenitem_name_list[i])
+    if len(wardenitem_areacode_list) != 0:
+        result_zones_dict[wardenitem_zone_list[i]][wardenitem_name_list[i]] = RESULT_(wardenitem_name_list[i], populate_area_mapping_dict[wardenitem_zone_list[i]][wardenitem_areacode_list[i]])
+    else:
+        result_zones_dict[wardenitem_zone_list[i]][wardenitem_name_list[i]] = RESULT_(wardenitem_name_list[i])
+        
 
 #MAPPED DATA
 if not nofile:
@@ -265,8 +299,8 @@ if not nofile:
                         if zone.name_ not in result_zones_dict:
                             result_zones_dict[zone.name_] = {}
                         
-                        if zone.type_ + str(zone.iddict_[id_index].index_) in result_zones_dict[zone.name_]:
-                            result_zones_dict[zone.name_][zone.type_ + "{:0>2d}".format(zone.iddict_[id_index].index_)] = RESULT_(zone.type_, zone.iddict_[id_index].area_, zone.iddict_[id_index].index_, result_zones_dict[zone.name_][zone.type_ + str(zone.iddict_[id_index].index_)].n_ + 1)
+                        if zone.type_ + "{:0>2d}".format(zone.iddict_[id_index].index_) in result_zones_dict[zone.name_]:
+                            result_zones_dict[zone.name_][zone.type_ + "{:0>2d}".format(zone.iddict_[id_index].index_)] = RESULT_(zone.type_, zone.iddict_[id_index].area_, zone.iddict_[id_index].index_, result_zones_dict[zone.name_][zone.type_ + "{:0>2d}".format(zone.iddict_[id_index].index_)].n_ + 1)
                         else:
                             result_zones_dict[zone.name_][zone.type_ + "{:0>2d}".format(zone.iddict_[id_index].index_)] = RESULT_(zone.type_, zone.iddict_[id_index].area_, zone.iddict_[id_index].index_)
 
