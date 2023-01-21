@@ -647,6 +647,104 @@
                     "islocker": false
                 }
             ]
+        },
+        {
+            "name": "ZONE 39",
+            "type": "ID",
+            "map file": "ZONE_39.png",
+            "size preset": 0,
+            "data": [
+                {
+                    "index": 14,
+                    "seed": 1006446912,
+                    "area": "B",
+                    "x": 413,
+                    "y": 194,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 15,
+                    "seed": 1452339456,
+                    "area": "B",
+                    "x": 93,
+                    "y": 235,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 16,
+                    "seed": 339968832,
+                    "area": "B",
+                    "x": 205,
+                    "y": 669,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 17,
+                    "seed": 774892416,
+                    "area": "B",
+                    "x": 248,
+                    "y": 433,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 18,
+                    "seed": 602973376,
+                    "area": "B",
+                    "x": 295,
+                    "y": 180,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 19,
+                    "seed": 179196944,
+                    "area": "B",
+                    "x": 289,
+                    "y": 18,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 20,
+                    "seed": 1963997824,
+                    "area": "B",
+                    "x": 93,
+                    "y": 523,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 21,
+                    "seed": 282856352,
+                    "area": "B",
+                    "x": 320,
+                    "y": 19,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 22,
+                    "seed": 675687488,
+                    "area": "B",
+                    "x": 406,
+                    "y": 424,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                }
+            ]
         }
     ],
     "seed learning data": []
