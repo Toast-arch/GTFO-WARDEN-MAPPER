@@ -1,20 +1,44 @@
 # GTFO-WARDEN-MAPPER
 
-GTFO WARDEN MAPPER is a GTFO log reading script meant for speedrunning.
+### WHAT IS GTFO WARDEN MAPPER?
 
-It can be used with or without level specific packages that enhance log analyis and mapping output.
+GTFO WARDEN MAPPER is a GTFO tool meant for speedrunning. It helps speedrunners optimize paths and mapping to reach optimal times on their runs without modifying the game in any way and thus it's use is authorized for GTFO speedrunning.  
 
-Without level specific json files, the tool will extract and highlight cell and cargo zones, key zones and "ri", and much more directly into your terminal.
-If level specific json files are provided the tool can also create ID, PD, GLP, KEY, etc.. visual maps.
+This tool uses custom made packages for specific levels that enhance log analyis thanks to pre-mapped ressources and allow additional features such as visual maps and extra information to be displayed. These packages can be found in the packages/ sub folder where it is indicated which levels have a package. Levels without a package can still be analysed but to a lesser extent.
 
-Seed learning is WIP and experimental.
+As of version 1.3.1 (January 2023), GTFO WARDEN MAPPER uses a terminal to display output information and image files for generated maps.
+
+### HOW TO USE
+
+The following requirements assume that you are running on Windows and are using steam to play GFTO.
 
 REQUIREMENTS:
- - python3+
- - python PIL : install with "pip install pillow"
- - python opnecv (optional) : install with "pip install opencv-python"
+- python3+ : you can install python 3.10 on the Microsoft store or on the python official website at https://www.python.org/downloads/windows/.
+- python PIL : to install a python package, open a terminal using the "cmd" or "powershell" windows application and use the command **pip install pillow**.
+- python opnecv (optional) :  to install a python package, open a terminal using the "cmd" or "powershell" windows application and use the command **pip install opencv-python**.
 
-HOW TO USE :
-- Run the script a couple seconds after the level has started (try again a couple seconds later still if no result or less than minimal number of valid IDs).
-- Go to the _GENERATED images for results if level specific package is available.
-- Run the script with --help option for more info on optional arguments.
+HOW TO DOWNLOAD:
+- You can directly download the zip archive with link: https://github.com/Toast-arch/GTFO-WARDEN-MAPPER/archive/refs/heads/main.zip
+- Or pull the repository using git with this link: https://github.com/Toast-arch/GTFO-WARDEN-MAPPER.git.
+
+HOW TO USE:
+- Open GTFO and start a level.
+- Open a terminal using the "cmd" windows application.
+- Navigate to the GTFO-WARDEN-MAPPER folder with the command **cd C:/Path/to/the/folder/GTFO-WARDEN-MAPPER**.
+- Run the python script with the command **python warden-mapper.py** a couple seconds after the level has started (if you run the script too early it may output incorrect or no information at all).
+- If a mapping package is available for the level you are playing, check for ZONE_XX_GENERATED.png images in the GTFO-WARDEN-MAPPER/ folder for visual maps.
+- [Optional] Run the script with --help option for more info on optional arguments.
+
+RECOMMENDATIONS:
+- Download and install Visual Studio Code at https://code.visualstudio.com/download for simple visualization of generated images and ease of use of the terminal.
+
+### AVAILABLE PACKAGES
+
+- Finished:
+R1 : A1, B1, B2, C2
+R2 : C2
+R7 : C1
+
+- Work In Progress:
+R2 : A1, B1, B3, B4, D1, D2
+R7 : E1
