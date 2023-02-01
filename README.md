@@ -35,10 +35,19 @@ RECOMMENDATIONS:
 ### AVAILABLE PACKAGES
 
 - Finished:
-R1 : A1, B1, B2, C2
-R2 : C2
-R7 : C1
+&nbsp;&nbsp;&nbsp;&nbsp;R1 : A1, B1, C2
+&nbsp;&nbsp;&nbsp;&nbsp;R2 : C2
+&nbsp;&nbsp;&nbsp;&nbsp;R7 : C1
+&nbsp;
+- Unfinished (contains potential erros or is missing content):
+&nbsp;&nbsp;&nbsp;&nbsp;R1 : B2
+&nbsp;
+- Work In Progress (not added yet):
+&nbsp;&nbsp;&nbsp;&nbsp;R2 : A1, B1, B3, B4, D1, D2
+&nbsp;&nbsp;&nbsp;&nbsp;R7 : E1
 
-- Work In Progress:
-R2 : A1, B1, B3, B4, D1, D2
-R7 : E1
+### NOTES & REMARKS
+
+- warden-mapper.py is the tool you should be using to speedrun.
+- package-mapper.py is a tool used to create level specific packages, do not use if unfamiliar.
+- Generated maps are found in the root folder as png files. Visual Studio Code updates images as they are overwritten which is great for visualizing them.
