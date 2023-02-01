@@ -39,7 +39,7 @@ RECOMMENDATIONS:
 &nbsp;&nbsp;&nbsp;&nbsp;R2 : C2
 &nbsp;&nbsp;&nbsp;&nbsp;R7 : C1
 &nbsp;
-- Unfinished (contains potential erros or is missing content):
+- Unfinished (contains potential errors or is missing content):
 &nbsp;&nbsp;&nbsp;&nbsp;R1 : B2
 &nbsp;
 - Work In Progress (not added yet):
