@@ -200,7 +200,8 @@ for index, value in enumerate(listOfLines):
         individualWords = lineToBeRead.split()
 
         keynameList.append(individualWords[4])
-        keyZoneList.append(individualWords[11][:4] + ' ' + individualWords[11][4:])
+        keyZone = (individualWords[11][:4] + ' ' + individualWords[11][4:])[:-1]
+        keyZoneList.append(keyZone)
 
         if "TryGetZoneFunctionDistribution returning FALSE!!" in listOfLines[index - 2]:
             keyriList.append("0")
@@ -220,7 +221,7 @@ for index, value in enumerate(listOfLines):
 #GENERATING RESULTS
 result_zones_dict = {}
 wardenitem_name_list.reverse()
-wardenitem_zone_list.sort()
+wardenitem_zone_list.sort()    
 
 #NOFILE KEYS
 for i in range(len(keyZoneList)):
