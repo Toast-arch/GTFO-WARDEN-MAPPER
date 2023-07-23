@@ -251,6 +251,36 @@
                     "z": 0,
                     "lock": 0,
                     "islocker": true
+                },
+                {
+                    "index": 30,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 358,
+                    "y": 474,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": false
+                },
+                {
+                    "index": 31,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 686,
+                    "y": 462,
+                    "z": 0,
+                    "lock": 0,
+                    "islocker": true
+                },
+                {
+                    "index": 32,
+                    "seed": 0,
+                    "area": "D",
+                    "x": 834,
+                    "y": 842,
+                    "z": -1,
+                    "lock": -1,
+                    "islocker": true
                 }
             ]
         }

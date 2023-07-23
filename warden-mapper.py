@@ -93,14 +93,23 @@ if not nofile:
 #LOADING JSON DATA
 zone_list = []
 listOfLines = []
+
 seedList = []
+
 keyriList = []
 keynameList = []
 keyZoneList = []
+
 cargozoneList = []
+
 wardenitem_name_list = []
+wardenitem_id_list = []
 wardenitem_zone_list = []
 wardenitem_areacode_list = []
+
+wardenitem_id_dict = {}
+
+
 populate_area_mapping_dict = {}
 SessionSeed = None
 
@@ -149,6 +158,8 @@ for index, value in enumerate(listOfLines):
 
         individualWords = lineToBeRead.split()
         wardenitemID = int(individualWords[6])
+
+        wardenitem_id_list.append(wardenitemID)
     #HSU NAME
     elif (lineToBeRead[38:72] == "RegisterObjectiveItemForCollection" and look_for_pickup):
         lineToBeRead = lineToBeRead[38:]
@@ -179,49 +190,26 @@ for index, value in enumerate(listOfLines):
         
         individualWords = lineToBeRead.split()
         cargozoneList.append(individualWords[5])
-
-        """ if wardenitemID == 128:
-            print("ID", end='')
-        elif wardenitemID == 129:
-            print("PD", end='')
-        elif wardenitemID == 131:
-            print("Cell", end='')
-        elif wardenitemID == 133:
-            print("Fog turbine", end='')
-        elif wardenitemID == 137 or wardenitemID == 141 or wardenitemID == 143 or wardenitemID == 145 or wardenitemID == 175 or wardenitemID == 170:
-            print("Neonate HSU", end='')
-        elif wardenitemID == 151:
-            print("Data sphere", end='')
-        elif wardenitemID == 169:
-            print("GLP", end='')
-        elif wardenitemID == 164 or wardenitemID == 166:
-            print("Matter wave projector", end='')
-        elif wardenitemID == 176 or wardenitemID == 138:
-            print("Cargo", end='')
-        elif wardenitemID == 154 or wardenitemID == 155:
-            print("HISEC Cargo", end='')
-        elif wardenitemID == 148:
-            print("Cryo", end='')
-        elif wardenitemID == 173:
-            print("Collection case", end='')
-        else:
-            print("Terminal", end='')
-        print(" found in " + individualWords[5][:4] + ' ' + individualWords[5][4:]) """
+        
         if wardenitemID != 128 and wardenitemID != 129 and wardenitemID != 169:
             wardenitem_zone_list.append(individualWords[5][:4] + ' ' + individualWords[5][4:])
-    #KEY NAME
+    #KEY NAME AND ZONE
     elif (lineToBeRead[35:56] == "CalcAreaWeights START"):
         lineToBeRead = lineToBeRead[35:]
 
         individualWords = lineToBeRead.split()
+
         keynameList.append(individualWords[4])
-    #KEY RI AND ZONE
+        keyZoneList.append(individualWords[11][:4] + ' ' + individualWords[11][4:])
+
+        if "TryGetZoneFunctionDistribution returning FALSE!!" in listOfLines[index - 2]:
+            keyriList.append("0")
+    #KEY RI
     elif (lineToBeRead[30:81] == "TryGetExistingGenericFunctionDistributionForSession"):
         lineToBeRead = lineToBeRead[30:186]
 
         individualWords = lineToBeRead.split()
         keyriList.append(individualWords[12])
-        keyZoneList.append(individualWords[4][:4] + ' ' + individualWords[4][4:])
     #SEED
     elif (lineToBeRead[15:60] == "GenericSmallPickupItem_Core.SetupFromLevelgen"):
         lineToBeRead = lineToBeRead[15:85]
@@ -240,23 +228,10 @@ for i in range(len(keyZoneList)):
         result_zones_dict[keyZoneList[i]] = {}
     result_zones_dict[keyZoneList[i]][keynameList[i]] = RESULT_(keynameList[i], "UNK", keyriList[i])
 
-""" print(wardenitem_name_list)
-print(wardenitem_zone_list)
-print(wardenitem_areacode_list) """
-
 #PURGING WRONG DATA ! SAFE MEASURE !
 if len(wardenitem_name_list) != len(wardenitem_zone_list):
     wardenitem_zone_list.clear()
     wardenitem_name_list.clear()
-
-#PURGING INCOMPLETE DATA
-i = 0
-while i < len(wardenitem_zone_list):
-    if wardenitem_name_list[i] == "":
-        wardenitem_name_list = wardenitem_name_list[:i] + wardenitem_name_list[i + 1:]
-        wardenitem_zone_list = wardenitem_zone_list[:i] + wardenitem_zone_list[i + 1:]
-        i = -1
-    i += 1
 
 #EXPERIMENTAL POPULATE AREAS
 for populate_zone_key in populate_area_mapping_dict:
@@ -266,7 +241,6 @@ for populate_zone_key in populate_area_mapping_dict:
     for area_key in populate_area_mapping_dict[populate_zone_key]:
         populate_area_mapping_dict[populate_zone_key][area_key] = tmp_area
         tmp_area = chr(ord(tmp_area) + 1)
-
 
 #NOFILE HSU
 for i in range(len(wardenitem_zone_list)):
