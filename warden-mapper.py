@@ -27,8 +27,6 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
 
         rundown_local_index = int(words[4][6:])
 
-        print(rundown_local_index)
-
         if rundown_local_index == 31:
             level_name += "R7"
         elif rundown_local_index == 32:
@@ -68,8 +66,6 @@ nofile = not os.path.exists("packages/" + package_name + '/' + package_name + ".
 nomap = False
 learning = False
 learning_input = False
-
-print(level_name)
 
 #ARGUMENT APPLY
 for arg in arg_list:
