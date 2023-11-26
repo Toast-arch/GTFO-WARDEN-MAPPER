@@ -5,3 +5,7 @@ gui testing
 output
 packages WIP
 *test*
+venv/
+dist/
+*.pyc
+*.egg-info

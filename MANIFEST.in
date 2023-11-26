@@ -1,0 +1,2 @@
+include src/gtfo-warden-mapper/packages/*/*.json
+include src/gtfo-warden-mapper/packages/*/*.png
