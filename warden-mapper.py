@@ -37,6 +37,8 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
             level_name += "R3"
         elif rundown_local_index == 38:
             level_name += "R5"
+        elif rundown_local_index == 41:
+            level_name += "R6"
 
         level_tier = words[5][4]
         level_name += level_tier
@@ -76,6 +78,8 @@ for arg in arg_list:
         print("   l\t\tLook for seed in seed learning data.")
         print("   L\t\tAdvanced seed learning option. Will prompt for data to be mapped to sessionseed.")
         exit()
+    if arg.key_ == '--nofile':
+        nofile = True
     if arg.key_ == '--nomap' or nofile:
         nomap = True
     if arg.key_ == '-L':
