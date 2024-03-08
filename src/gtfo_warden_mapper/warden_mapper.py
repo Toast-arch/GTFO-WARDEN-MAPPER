@@ -5,10 +5,17 @@ import os
 import sys
 import json
 
+import gtfo_warden_mapper
+
 from assets.dataclasses import ID_, ZONE_, ARG_, RESULT_
+
+GWP_PATH = os.path.join(gtfo_warden_mapper.__file__[:-11], 'packages')
+
+print(GWP_PATH)
 
 class GTFO_WARDEN_MAPPER:
     def run():
+        print("WTF")
         #PATH TO YOUR GTFO APPDATA FORLDER
         directory = "C:/Users/" + os.environ.get("USERNAME") + "/AppData/LocalLow/10 Chambers Collective/GTFO/"
 
@@ -37,6 +44,8 @@ class GTFO_WARDEN_MAPPER:
                     level_name += "R2"
                 elif rundown_local_index == 34:
                     level_name += "R3"
+                elif rundown_local_index == 37:
+                    level_name += "R4"
                 elif rundown_local_index == 38:
                     level_name += "R5"
                 elif rundown_local_index == 41:
@@ -66,7 +75,7 @@ class GTFO_WARDEN_MAPPER:
                 i += 1
 
         package_name = level_name
-        nofile = not os.path.exists("packages/" + package_name + '/' + package_name + ".json")
+        nofile = not os.path.exists(os.path.join(GWP_PATH, package_name, package_name + ".json"))
         nomap = False
         learning = False
         learning_input = False
@@ -92,7 +101,7 @@ class GTFO_WARDEN_MAPPER:
         #PACKAGE JSON FILE
         if not nofile:
             try:
-                json_file = open("packages/" + package_name + '/' + package_name + ".json", 'r+')
+                json_file = open(os.path.join(GWP_PATH, package_name, package_name + ".json"), 'r+')
                 json_data = json.load(json_file)
             except IOError:
                 print("No file found for " + package_name)

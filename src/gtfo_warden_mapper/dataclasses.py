@@ -1,7 +1,10 @@
 import json
+import os
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
+
+from .warden_mapper import GWP_PATH
 
 ##CLASSES
 class ID_:
@@ -73,7 +76,7 @@ class ZONE_:
         self.type_ = type
         self.iddict_ = iddict
         self.image_file_ = image_file
-        self.image_save_ = Image.open("packages/" + package_name + '/' + image_file)
+        self.image_save_ = Image.open(os.path.join(GWP_PATH, package_name, image_file))
 
     def save_image(self):
         self.image_save_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")

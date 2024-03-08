@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='gtfo-warden-mapper',
+    name='gtfo_warden_mapper',
     version='1.1.2',
     author='ARCHI#1757',
     author_email='thiago.pbueno@gmail.com',
