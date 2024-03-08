@@ -35,6 +35,8 @@ for line in reversed(open(directory + netstatus_files[len(netstatus_files) - 1],
             level_name += "R2"
         elif rundown_local_index == 34:
             level_name += "R3"
+        elif rundown_local_index == 37:
+            level_name += "R4"
         elif rundown_local_index == 38:
             level_name += "R5"
         elif rundown_local_index == 41:
