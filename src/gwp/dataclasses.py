@@ -6,7 +6,6 @@ from PIL import ImageDraw
 
 from .constants import GWP_PATH
 
-
 ##CLASSES
 class ID_:
     def __init__(self, index=0, seed=0, area='', x=0, y=0, z=0, lock=0, islocker=True, zone_size_preset = 1):
@@ -26,19 +25,19 @@ class ID_:
     def draw_container(self, background, key_symbol=False):
         if self.zone_size_preset_ == 0:
             if self.islocker_:
-                container_image = Image.open("assets/locker_small.png")
+                container_image = Image.open(os.path.join(GWP_PATH, "assets", "locker_small.png"))
             else:
-                container_image = Image.open("assets/box_small.png")
+                container_image = Image.open(os.path.join(GWP_PATH, "assets", "box_small.png"))
             font_size = 33
         else:
             if self.islocker_:
-                container_image = Image.open("assets/locker.png")
+                container_image = Image.open(os.path.join(GWP_PATH, "assets", "locker.png"))
             else:
-                container_image = Image.open("assets/box.png")
+                container_image = Image.open(os.path.join(GWP_PATH, "assets", "box.png"))
             font_size = 55
         
         draw = ImageDraw.Draw(background)
-        font = ImageFont.truetype("assets/OpenSans-Bold.ttf", font_size)
+        font = ImageFont.truetype(os.path.join(GWP_PATH, "assets", "OpenSans-Bold.ttf"), font_size)
 
         if key_symbol:
             if self.zone_size_preset_ == 0:
@@ -77,7 +76,7 @@ class ZONE_:
         self.type_ = type
         self.iddict_ = iddict
         self.image_file_ = image_file
-        self.image_save_ = Image.open(os.path.join(GWP_PATH, package_name, image_file))
+        self.image_save_ = Image.open(os.path.join(GWP_PATH, "packages", package_name, image_file))
 
     def save_image(self):
         self.image_save_.save(self.image_file_[:len(self.image_file_) - 4] + "_GENERATED.png")

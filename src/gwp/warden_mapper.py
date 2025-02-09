@@ -71,7 +71,7 @@ class GTFO_WARDEN_MAPPER:
                 i += 1
 
         package_name = level_name
-        nofile = not os.path.exists(os.path.join(GWP_PATH, package_name, package_name + ".json"))
+        nofile = not os.path.exists(os.path.join(GWP_PATH, "packages", package_name, package_name + ".json"))
         nomap = False
         learning = False
         learning_input = False
@@ -97,7 +97,7 @@ class GTFO_WARDEN_MAPPER:
         #PACKAGE JSON FILE
         if not nofile:
             try:
-                json_file = open(os.path.join(GWP_PATH, package_name, package_name + ".json"), 'r+')
+                json_file = open(os.path.join(GWP_PATH, "packages", package_name, package_name + ".json"), 'r+')
                 json_data = json.load(json_file)
             except IOError:
                 print("No file found for " + package_name)
