@@ -5,13 +5,9 @@ import os
 import sys
 import json
 
-import gtfo_warden_mapper
+from .constants import GWP_PATH
 
-from assets.dataclasses import ID_, ZONE_, ARG_, RESULT_
-
-GWP_PATH = os.path.join(gtfo_warden_mapper.__file__[:-11], 'packages')
-
-print(GWP_PATH)
+from .dataclasses import ID_, ZONE_, ARG_, RESULT_
 
 class GTFO_WARDEN_MAPPER:
     def run():
